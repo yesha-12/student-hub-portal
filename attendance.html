@@ -2,79 +2,263 @@
 <html lang="en">
 
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Attendance - Student Hub Portal</title>
+
     <link rel="stylesheet" href="css/style.css">
+
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
+
 
 <body>
 
-    <header>
-        <h1>Student Hub Portal</h1>
 
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="aboutus.html">About Us</a> |
-            <a href="student.html">Student</a> |
-            <a href="courses.html">Courses</a> |
-            <a href="attendance.html">Attendance</a> |
-            <a href="assignment.html">Assignment</a> |
-            <a href="notice.html">Notice</a> |
-            <a href="faculty.html">Faculty</a> |
-            <a href="profile.html">Profile</a> |
-            <a href="contact.html">Contact</a> |
-            <a href="login.html">Login</a> |
-            <a href="admin.html">Admin</a>
-        </nav>
 
-        <hr>
-    </header>
+<!-- SIDEBAR -->
 
-    <main>
+<div class="sidebar">
 
-        <section>
 
-            <article>
+    <div class="logo">
 
-                <h2>Attendance Record</h2>
+        <h2>Student Hub</h2>
 
-                <table border="1" cellpadding="8">
+    </div>
 
-                    <tr>
-                        <th>Subject</th>
-                        <th>Total Classes</th>
-                        <th>Present</th>
-                        <th>Percentage</th>
-                    </tr>
 
-                    <tr>
-                        <td>HTML</td>
-                        <td>30</td>
-                        <td>28</td>
-                        <td>93%</td>
-                    </tr>
 
-                    <tr>
-                        <td>C++</td>
-                        <td>30</td>
-                        <td>27</td>
-                        <td>90%</td>
-                    </tr>
+    <ul>
 
-                </table>
 
-            </article>
+        <li>
+            <a href="index.html">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
 
-        </section>
 
-    </main>
+        <li>
+            <a href="student.html">
+                <i class="fa fa-user"></i> Student
+            </a>
+        </li>
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 Student Hub Portal. All Rights Reserved.</p>
-        <p><a href="index.html">Back to Home</a></p>
-    </footer>
+
+        <li>
+            <a href="courses.html">
+                <i class="fa fa-book"></i> Courses
+            </a>
+        </li>
+
+
+        <li>
+            <a href="assignment.html">
+                <i class="fa fa-file"></i> Assignment
+            </a>
+        </li>
+
+
+        <li>
+            <a class="active" href="attendance.html">
+                <i class="fa fa-calendar-check"></i> Attendance
+            </a>
+        </li>
+
+
+        <li>
+            <a href="profile.html">
+                <i class="fa fa-id-card"></i> Profile
+            </a>
+        </li>
+
+
+        <li>
+            <a href="faculty.html">
+                <i class="fa fa-users"></i> Faculty
+            </a>
+        </li>
+
+
+        <li>
+            <a href="contact.html">
+                <i class="fa fa-phone"></i> Contact
+            </a>
+        </li>
+
+
+    </ul>
+
+
+</div>
+
+
+
+
+
+
+<!-- MAIN CONTENT -->
+
+<div class="main">
+
+
+
+    <!-- TOP BAR -->
+
+    <div class="topbar">
+
+        <h2>Attendance</h2>
+
+
+        <div class="profile">
+
+            <span>Yesha Kevadiya</span>
+
+        </div>
+
+
+    </div>
+
+
+
+
+
+    <section>
+
+
+
+        <div class="section-title">
+
+            <h2>Attendance Record</h2>
+
+            <p>
+                Check your subject wise attendance details.
+            </p>
+
+        </div>
+
+
+
+
+
+
+        <table>
+
+
+            <tr>
+
+                <th>Subject</th>
+
+                <th>Total Classes</th>
+
+                <th>Present</th>
+
+                <th>Absent</th>
+
+                <th>Attendance %</th>
+
+            </tr>
+
+
+
+            <tr>
+
+                <td>C++ Programming</td>
+
+                <td>40</td>
+
+                <td>36</td>
+
+                <td>4</td>
+
+                <td>90%</td>
+
+            </tr>
+
+
+
+            <tr>
+
+                <td>Data Structures</td>
+
+                <td>45</td>
+
+                <td>40</td>
+
+                <td>5</td>
+
+                <td>88%</td>
+
+            </tr>
+
+
+
+            <tr>
+
+                <td>Database Management</td>
+
+                <td>42</td>
+
+                <td>39</td>
+
+                <td>3</td>
+
+                <td>92%</td>
+
+            </tr>
+
+
+
+            <tr>
+
+                <td>Web Development</td>
+
+                <td>38</td>
+
+                <td>34</td>
+
+                <td>4</td>
+
+                <td>89%</td>
+
+            </tr>
+
+
+
+        </table>
+
+
+
+    </section>
+
+
+
+
+
+
+
+<footer>
+
+<p>
+© 2026 Student Hub Portal. All Rights Reserved.
+</p>
+
+</footer>
+
+
+
+
+
+</div>
+
+
+
 
 </body>
 

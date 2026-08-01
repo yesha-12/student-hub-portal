@@ -1,140 +1,300 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Hub | Students</title>
+
+    <title>Student | Student Hub</title>
+
+    <!-- CSS -->
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
+
+
 <body>
 
-    <!-- Navigation -->
-    <nav class="sidebar">
-        <h2 class="logo">Student Hub</h2>
 
-        <ul>
-            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
-            <li><a href="aboutus.html"><i class="fas fa-info-circle"></i> About</a></li>
-            <li><a href="student.html" class="active"><i class="fas fa-user-graduate"></i> Students</a></li>
-            <li><a href="courses.html"><i class="fas fa-book"></i> Courses</a></li>
-            <li><a href="assignment.html"><i class="fas fa-file-alt"></i> Assignments</a></li>
-            <li><a href="attendance.html"><i class="fas fa-calendar-check"></i> Attendance</a></li>
-            <li><a href="notice.html"><i class="fas fa-bullhorn"></i> Notices</a></li>
-            <li><a href="faculty.html"><i class="fas fa-chalkboard-teacher"></i> Faculty</a></li>
-            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
-            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
-            <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
-        </ul>
-    </nav>
+<!-- Sidebar -->
 
-    <!-- Main Content -->
-    <div class="main-content">
+<div class="sidebar">
 
-        <header>
-            <h1>Student Information</h1>
-            <p>Manage and view student details.</p>
-        </header>
+    <div class="logo">
 
-        <!-- Search -->
-        <section class="search-box">
-            <input type="text" placeholder="Search Student...">
-            <button>Search</button>
-        </section>
+        <img src="images/logo.png" alt="Student Hub Logo">
 
-        <!-- Student Table -->
-        <section class="table-container">
-
-            <table>
-                <thead>
-                    <tr>
-                        <th>ID</th>
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>Year</th>
-                        <th>Email</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>101</td>
-                        <td>Rahul Patel</td>
-                        <td>CSE</td>
-                        <td>2nd</td>
-                        <td>rahul@gmail.com</td>
-                        <td><span class="status active">Active</span></td>
-                    </tr>
-
-                    <tr>
-                        <td>102</td>
-                        <td>Priya Shah</td>
-                        <td>IT</td>
-                        <td>3rd</td>
-                        <td>priya@gmail.com</td>
-                        <td><span class="status active">Active</span></td>
-                    </tr>
-
-                    <tr>
-                        <td>103</td>
-                        <td>Amit Kumar</td>
-                        <td>CE</td>
-                        <td>1st</td>
-                        <td>amit@gmail.com</td>
-                        <td><span class="status inactive">Inactive</span></td>
-                    </tr>
-
-                    <tr>
-                        <td>104</td>
-                        <td>Sneha Patel</td>
-                        <td>EC</td>
-                        <td>4th</td>
-                        <td>sneha@gmail.com</td>
-                        <td><span class="status active">Active</span></td>
-                    </tr>
-
-                    <tr>
-                        <td>105</td>
-                        <td>Jay Mehta</td>
-                        <td>Mechanical</td>
-                        <td>2nd</td>
-                        <td>jay@gmail.com</td>
-                        <td><span class="status active">Active</span></td>
-                    </tr>
-
-                </tbody>
-            </table>
-
-        </section>
-
-        <!-- Statistics -->
-        <section class="cards">
-
-            <div class="card">
-                <h2>150</h2>
-                <p>Total Students</p>
-            </div>
-
-            <div class="card">
-                <h2>120</h2>
-                <p>Present Today</p>
-            </div>
-
-            <div class="card">
-                <h2>30</h2>
-                <p>Absent Today</p>
-            </div>
-
-            <div class="card">
-                <h2>12</h2>
-                <p>Departments</p>
-            </div>
-
-        </section>
+        <h2>Student Hub</h2>
 
     </div>
 
+
+    <ul>
+
+        <li>
+            <a href="index.html">
+                <i class="fa-solid fa-house"></i>
+                Home
+            </a>
+        </li>
+
+
+        <li>
+            <a href="student.html" class="active">
+                <i class="fa-solid fa-user-graduate"></i>
+                Student
+            </a>
+        </li>
+
+
+        <li>
+            <a href="courses.html">
+                <i class="fa-solid fa-book"></i>
+                Courses
+            </a>
+        </li>
+
+
+        <li>
+            <a href="assignment.html">
+                <i class="fa-solid fa-file-lines"></i>
+                Assignment
+            </a>
+        </li>
+
+
+        <li>
+            <a href="attendance.html">
+                <i class="fa-solid fa-calendar-check"></i>
+                Attendance
+            </a>
+        </li>
+
+
+        <li>
+            <a href="faculty.html">
+                <i class="fa-solid fa-chalkboard-user"></i>
+                Faculty
+            </a>
+        </li>
+
+
+        <li>
+            <a href="profile.html">
+                <i class="fa-solid fa-user"></i>
+                Profile
+            </a>
+        </li>
+
+
+        <li>
+            <a href="contact.html">
+                <i class="fa-solid fa-phone"></i>
+                Contact
+            </a>
+        </li>
+
+
+    </ul>
+
+</div>
+
+
+
+
+
+<!-- Main Section -->
+
+<div class="main">
+
+
+
+<!-- Top Bar -->
+
+<div class="topbar">
+
+    <h2>Student Dashboard</h2>
+
+
+    <div class="profile">
+
+        <img src="images/student.png" alt="Student">
+
+        <span>Student</span>
+
+    </div>
+
+
+</div>
+
+
+
+
+
+<section>
+
+
+<div class="section-title">
+
+    <h2>
+        Welcome Student 👋
+    </h2>
+
+    <p>
+        Manage your academic activities from one place.
+    </p>
+
+</div>
+
+
+
+
+
+
+<!-- Cards -->
+
+
+<div class="card-container">
+
+
+    <div class="card">
+
+        <i class="fa-solid fa-book"></i>
+
+        <h3>Courses</h3>
+
+        <p>
+            View your enrolled subjects and study materials.
+        </p>
+
+        <a href="courses.html" class="btn">
+            View
+        </a>
+
+    </div>
+
+
+
+
+
+    <div class="card">
+
+        <i class="fa-solid fa-file"></i>
+
+        <h3>Assignments</h3>
+
+        <p>
+            Check your pending and completed assignments.
+        </p>
+
+        <a href="assignment.html" class="btn">
+            View
+        </a>
+
+    </div>
+
+
+
+
+
+
+    <div class="card">
+
+        <i class="fa-solid fa-calendar-check"></i>
+
+        <h3>Attendance</h3>
+
+        <p>
+            Check your attendance record.
+        </p>
+
+        <a href="attendance.html" class="btn">
+            View
+        </a>
+
+    </div>
+
+
+
+
+
+
+    <div class="card">
+
+        <i class="fa-solid fa-bell"></i>
+
+        <h3>Notices</h3>
+
+        <p>
+            Get latest college announcements.
+        </p>
+
+        <a href="notice.html" class="btn">
+            View
+        </a>
+
+    </div>
+
+
+
+</div>
+
+
+
+
+
+
+<!-- Student Information -->
+
+
+<div class="contact-box">
+
+
+<h3>
+    Student Information
+</h3>
+
+
+<p>
+    <b>Name:</b> Your Name
+</p>
+
+
+<p>
+    <b>Department:</b> Computer Science Engineering
+</p>
+
+
+<p>
+    <b>Semester:</b> 2nd Semester
+</p>
+
+
+<p>
+    <b>Email:</b> student@gmail.com
+</p>
+
+<a href="profile.html" class="btn">
+    Edit Profile
+</a>
+
+</div>
+
+</section>
+
+<footer>
+
+<p>
+    © 2026 Student Hub | All Rights Reserved
+</p>
+
+</footer>
+</div>
+
 </body>
+
 </html>

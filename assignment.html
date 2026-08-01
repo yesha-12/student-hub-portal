@@ -2,79 +2,261 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Assignment - Student Hub Portal</title>
-    <link rel="stylesheet" href="css/style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Assignment | Student Hub</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
+
 
 <body>
 
-    <header>
-        <h1>Student Hub Portal</h1>
 
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="aboutus.html">About Us</a> |
-            <a href="student.html">Student</a> |
-            <a href="courses.html">Courses</a> |
-            <a href="attendance.html">Attendance</a> |
-            <a href="assignment.html">Assignment</a> |
-            <a href="notice.html">Notice</a> |
-            <a href="faculty.html">Faculty</a> |
-            <a href="profile.html">Profile</a> |
-            <a href="contact.html">Contact</a> |
-            <a href="login.html">Login</a> |
-            <a href="admin.html">Admin</a>
-        </nav>
+<!-- SIDEBAR -->
 
-        <hr>
-    </header>
+<div class="sidebar">
 
-    <main>
+<div class="logo">
 
-        <section>
+<img src="images/logo.png">
 
-            <article>
+<h2>Student Hub</h2>
 
-                <h2>Assignment Details</h2>
+</div>
 
-                <table border="1" cellpadding="8">
 
-                    <tr>
-                        <th>Subject</th>
-                        <th>Assignment</th>
-                        <th>Due Date</th>
-                        <th>Status</th>
-                    </tr>
 
-                    <tr>
-                        <td>HTML</td>
-                        <td>Website Design</td>
-                        <td>20-07-2026</td>
-                        <td>Pending</td>
-                    </tr>
+<ul>
 
-                    <tr>
-                        <td>C++</td>
-                        <td>Mini Project</td>
-                        <td>25-07-2026</td>
-                        <td>Completed</td>
-                    </tr>
+<li>
+<a href="index.html">
+<i class="fa fa-home"></i> Home
+</a>
+</li>
 
-                </table>
 
-            </article>
+<li>
+<a href="student.html">
+<i class="fa fa-user"></i> Student
+</a>
+</li>
 
-        </section>
 
-    </main>
+<li>
+<a href="courses.html">
+<i class="fa fa-book"></i> Courses
+</a>
+</li>
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 Student Hub Portal. All Rights Reserved.</p>
-        <p><a href="index.html">Back to Home</a></p>
-    </footer>
+
+<li>
+<a href="assignment.html" class="active">
+<i class="fa fa-file"></i> Assignment
+</a>
+</li>
+
+
+<li>
+<a href="attendance.html">
+<i class="fa fa-calendar"></i> Attendance
+</a>
+</li>
+
+
+<li>
+<a href="faculty.html">
+<i class="fa fa-users"></i> Faculty
+</a>
+</li>
+
+
+<li>
+<a href="notice.html">
+<i class="fa fa-bell"></i> Notice
+</a>
+</li>
+
+
+<li>
+<a href="profile.html">
+<i class="fa fa-user-circle"></i> Profile
+</a>
+</li>
+
+
+<li>
+<a href="contact.html">
+<i class="fa fa-phone"></i> Contact
+</a>
+</li>
+
+
+</ul>
+
+</div>
+
+
+
+
+
+
+<!-- MAIN -->
+
+<div class="main">
+
+
+
+<div class="topbar">
+
+<h2>Assignment</h2>
+
+
+<div class="profile">
+
+<img src="images/student.png">
+
+<span>Student</span>
+
+</div>
+
+</div>
+
+
+
+
+
+<section>
+
+
+<div class="section-title">
+
+<h2>
+My Assignments
+</h2>
+
+<p>
+Check your pending and submitted assignments
+</p>
+
+</div>
+
+
+
+
+
+<table>
+
+
+<tr>
+
+<th>
+Subject
+</th>
+
+<th>
+Assignment
+</th>
+
+<th>
+Last Date
+</th>
+
+<th>
+Status
+</th>
+
+</tr>
+
+
+
+<tr>
+
+<td>
+C++ Programming
+</td>
+
+<td>
+OOP Concepts
+</td>
+
+<td>
+10 August 2026
+</td>
+
+<td>
+Pending
+</td>
+
+</tr>
+
+
+
+
+<tr>
+
+<td>
+Web Development
+</td>
+
+<td>
+Create Student Portal
+</td>
+
+<td>
+15 August 2026
+</td>
+
+<td>
+Completed
+</td>
+
+</tr>
+
+
+
+
+
+<tr>
+
+<td>
+Database
+</td>
+
+<td>
+SQL Queries
+</td>
+
+<td>
+20 August 2026
+</td>
+
+<td>
+Pending
+</td>
+
+</tr>
+
+
+
+</table>
+
+
+
+</section>
+
+<footer>
+
+© 2026 Student Hub | All Rights Reserved
+
+</footer>
+</div>
 
 </body>
 

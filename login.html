@@ -2,76 +2,144 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Student Hub Portal</title>
-    <link rel="stylesheet" href="css/style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Login - Student Hub Portal</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
+
 
 <body>
 
-    <header>
-        <h1>Student Hub Portal</h1>
 
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="aboutus.html">About Us</a> |
-            <a href="contact.html">Contact Us</a> |
-            <a href="admin.html">Admin</a> |
-            <a href="login.html">Login</a> |
-            <a href="notice.html">Notice</a> |
-            <a href="student.html">Student</a> |
-            <a href="assignment.html">Assignment</a> |
-            <a href="attendance.html">Attendance</a> |
-            <a href="courses.html">Courses</a> |
-            <a href="faculty.html">Faculty</a> |
-            <a href="profile.html">Profile</a>
-        </nav>
+<div class="sidebar">
 
-        <hr>
-    </header>
+    <div class="logo">
+        <h2>Student Hub</h2>
+    </div>
 
-    <main>
 
-        <section>
+    <ul>
 
-            <article>
+        <li>
+            <a href="index.html">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
 
-                <h2>Student Login</h2>
+        <li>
+            <a href="student.html">
+                <i class="fa fa-user"></i> Student
+            </a>
+        </li>
 
-                <form>
+        <li>
+            <a href="courses.html">
+                <i class="fa fa-book"></i> Courses
+            </a>
+        </li>
 
-                    <label for="username">Username:</label><br>
-                    <input type="text" id="username" name="username"><br><br>
+        <li>
+            <a href="notice.html">
+                <i class="fa fa-bell"></i> Notice
+            </a>
+        </li>
 
-                    <label for="password">Password:</label><br>
-                    <input type="password" id="password" name="password"><br><br>
+        <li>
+            <a class="active" href="login.html">
+                <i class="fa fa-sign-in"></i> Login
+            </a>
+        </li>
 
-                    <input type="checkbox" id="remember" name="remember">
-                    <label for="remember">Remember Me</label>
-                    <br><br>
+        <li>
+            <a href="contact.html">
+                <i class="fa fa-phone"></i> Contact
+            </a>
+        </li>
 
-                    <input type="submit" value="Login">
-                    <input type="reset" value="Clear">
+    </ul>
 
-                </form>
+</div>
 
-                <br>
 
-                <p>Don't have an account?</p>
-                <p><a href="index.html">Register Here</a></p>
 
-            </article>
 
-        </section>
+<div class="main">
 
-    </main>
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 Student Hub Portal. All Rights Reserved.</p>
-        <p><a href="index.html">Back to Home</a></p>
-    </footer>
+<div class="topbar">
+
+    <h2>Login</h2>
+
+</div>
+
+
+
+
+<section>
+
+
+<div class="section-title">
+
+<h2>Student Login</h2>
+
+<p>
+Login to access your Student Hub account
+</p>
+
+</div>
+
+
+
+
+<form>
+
+
+<label>Email</label>
+
+<input type="email" placeholder="Enter your email">
+
+
+
+<label>Password</label>
+
+<input type="password" placeholder="Enter your password">
+
+
+
+<button type="submit">
+Login
+</button>
+
+
+</form>
+
+
+
+</section>
+
+
+
+
+<footer>
+
+<p>
+© 2026 Student Hub Portal. All Rights Reserved.
+</p>
+
+</footer>
+
+
+
+</div>
+
 
 </body>
 

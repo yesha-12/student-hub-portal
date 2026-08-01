@@ -2,78 +2,202 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Faculty - Student Hub Portal</title>
-    <link rel="stylesheet" href="css/style.css">
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Faculty - Student Hub Portal</title>
+
+<link rel="stylesheet" href="css/style.css">
+
+<link rel="stylesheet" 
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
+
 
 <body>
 
-    <header>
-        <h1>Student Hub Portal</h1>
 
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="aboutus.html">About Us</a> |
-            <a href="student.html">Student</a> |
-            <a href="courses.html">Courses</a> |
-            <a href="attendance.html">Attendance</a> |
-            <a href="assignment.html">Assignment</a> |
-            <a href="notice.html">Notice</a> |
-            <a href="faculty.html">Faculty</a> |
-            <a href="profile.html">Profile</a> |
-            <a href="contact.html">Contact</a> |
-            <a href="login.html">Login</a> |
-            <a href="admin.html">Admin</a>
-        </nav>
+<!-- Sidebar -->
 
-        <hr>
-    </header>
+<div class="sidebar">
 
-    <main>
+    <div class="logo">
+        <h2>Student Hub</h2>
+    </div>
 
-        <section>
 
-            <article>
+    <ul>
 
-                <h2>Faculty Details</h2>
+        <li>
+            <a href="index.html">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
 
-                <table border="1" cellpadding="8">
 
-                    <tr>
-                        <th>Name</th>
-                        <th>Subject</th>
-                    </tr>
+        <li>
+            <a href="student.html">
+                <i class="fa fa-user"></i> Student
+            </a>
+        </li>
 
-                    <tr>
-                        <td>Dr. Patel</td>
-                        <td>HTML</td>
-                    </tr>
 
-                    <tr>
-                        <td>Prof. Shah</td>
-                        <td>C++</td>
-                    </tr>
+        <li>
+            <a href="courses.html">
+                <i class="fa fa-book"></i> Courses
+            </a>
+        </li>
 
-                    <tr>
-                        <td>Prof. Mehta</td>
-                        <td>DBMS</td>
-                    </tr>
 
-                </table>
+        <li>
+            <a href="assignment.html">
+                <i class="fa fa-file"></i> Assignment
+            </a>
+        </li>
 
-            </article>
 
-        </section>
+        <li>
+            <a href="attendance.html">
+                <i class="fa fa-calendar"></i> Attendance
+            </a>
+        </li>
 
-    </main>
+
+        <li>
+            <a href="profile.html">
+                <i class="fa fa-id-card"></i> Profile
+            </a>
+        </li>
+
+
+        <li>
+            <a class="active" href="faculty.html">
+                <i class="fa fa-users"></i> Faculty
+            </a>
+        </li>
+
+
+        <li>
+            <a href="contact.html">
+                <i class="fa fa-phone"></i> Contact
+            </a>
+        </li>
+
+
+    </ul>
+
+</div>
+
+
+
+
+
+<!-- Main -->
+
+<div class="main">
+
+
+    <div class="topbar">
+
+        <h2>Faculty</h2>
+
+        <div class="profile">
+            <span>Yesha Kevadiya</span>
+        </div>
+
+    </div>
+
+
+
+    <section>
+
+
+        <div class="section-title">
+
+            <h2>Our Faculty</h2>
+
+            <p>
+                Computer Science Engineering Department
+            </p>
+
+        </div>
+
+
+
+
+        <div class="faculty-container">
+
+
+            <div class="faculty">
+
+                <h3>Dr. Vaibhavi Patel</h3>
+
+                <p>
+                    Department: CSE
+                </p>
+
+                <p>
+                    Subject: Data Structures
+                </p>
+
+            </div>
+
+
+
+            <div class="faculty">
+
+                <h3>Prof. Amit Shah</h3>
+
+                <p>
+                    Department: CSE
+                </p>
+
+                <p>
+                    Subject: Database Management
+                </p>
+
+            </div>
+
+
+
+
+            <div class="faculty">
+
+                <h3>Prof. Neha Desai</h3>
+
+                <p>
+                    Department: CSE
+                </p>
+
+                <p>
+                    Subject: Web Development
+                </p>
+
+            </div>
+
+
+
+        </div>
+
+
+    </section>
+
+
 
     <footer>
-        <hr>
-        <p>&copy; 2026 Student Hub Portal. All Rights Reserved.</p>
-        <p><a href="index.html">Back to Home</a></p>
+
+        <p>
+            © 2026 Student Hub Portal. All Rights Reserved.
+        </p>
+
     </footer>
+
+
+</div>
+
+
 
 </body>
 

@@ -5,110 +5,203 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Hub Portal</title>
+
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Student Hub Portal</h1>
+    <!-- Sidebar -->
 
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="aboutus.html">About Us</a> |
-            <a href="contact.html">Contact Us</a> |
-            <a href="admin.html">Admin</a> |
-            <a href="login.html">Login</a> |
-            <a href="notice.html">Notice</a> |
-            <a href="student.html">Student</a> |
-            <a href="assignment.html">Assignment</a> |
-            <a href="attendance.html">Attendance</a> |
-            <a href="courses.html">Courses</a> |
-            <a href="faculty.html">Faculty</a> |
-            <a href="profile.html">Profile</a>
-        </nav>
+    <div class="sidebar">
 
-        <hr>
-    </header>
+        <div class="logo">
+            <img src="images/logo.png" alt="Logo">
+            <h2>Student Hub</h2>
+        </div>
 
-    <main>
+        <ul>
 
-        <section>
+            <li><a href="index.html" class="active"><i class="fas fa-home"></i> Home</a></li>
 
-            <article>
+            <li><a href="aboutus.html"><i class="fas fa-users"></i> About</a></li>
 
-                <h2>Home Page</h2>
+            <li><a href="student.html"><i class="fas fa-user-graduate"></i> Student</a></li>
 
-                <form>
+            <li><a href="courses.html"><i class="fas fa-book"></i> Courses</a></li>
 
-                    <label for="fullname">Full Name</label><br>
-                    <input type="text" id="fullname" name="fullname" placeholder="Enter your name"><br><br>
+            <li><a href="faculty.html"><i class="fas fa-chalkboard-teacher"></i> Faculty</a></li>
 
-                    <label for="enrollment">Enrollment Number</label><br>
-                    <input type="text" id="enrollment" name="enrollment" placeholder="Enter Enrollment No"><br><br>
+            <li><a href="attendance.html"><i class="fas fa-calendar-check"></i> Attendance</a></li>
 
-                    <label for="email">Email ID</label><br>
-                    <input type="email" id="email" name="email" placeholder="Enter Email"><br><br>
+            <li><a href="assignment.html"><i class="fas fa-file-alt"></i> Assignment</a></li>
 
-                    <label for="contact">Contact Number</label><br>
-                    <input type="tel" id="contact" name="contact" placeholder="Enter Mobile Number"><br><br>
+            <li><a href="notice.html"><i class="fas fa-bullhorn"></i> Notice</a></li>
 
-                    <label for="department">Department</label><br>
-                    <input type="text" id="department" name="department" placeholder="Computer Science"><br><br>
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
 
-                    <label for="semester">Semester</label><br>
-                    <select id="semester" name="semester">
-                        <option>Select Semester</option>
-                        <option>Semester 1</option>
-                        <option>Semester 2</option>
-                        <option>Semester 3</option>
-                        <option>Semester 4</option>
-                        <option>Semester 5</option>
-                        <option>Semester 6</option>
-                        <option>Semester 7</option>
-                        <option>Semester 8</option>
-                    </select>
-                    <br><br>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
 
-                    <label>Gender</label><br>
-                    <input type="radio" id="male" name="gender" value="Male">
-                    <label for="male">Male</label>
+            <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
 
-                    <input type="radio" id="female" name="gender" value="Female">
-                    <label for="female">Female</label>
+            <li><a href="admin.html"><i class="fas fa-user-shield"></i> Admin</a></li>
 
-                    <input type="radio" id="other" name="gender" value="Other">
-                    <label for="other">Other</label>
-                    <br><br>
+        </ul>
 
-                    <label for="dob">Date of Birth</label><br>
-                    <input type="date" id="dob" name="dob"><br><br>
+    </div>
 
-                    <label for="address">Address</label><br>
-                    <textarea id="address" name="address" rows="4" cols="30"></textarea><br><br>
+    <!-- Main Content -->
 
-                    <label for="password">Password</label><br>
-                    <input type="password" id="password" name="password"><br><br>
+    <div class="main">
 
-                    <button type="submit">Submit</button>
-                    <button type="reset">Reset</button>
+        <!-- Header -->
 
-                </form>
+        <header class="topbar">
 
-            </article>
+            <h2>🏫 Student Hub Portal</h2>
+
+            <div class="profile">
+                <span>Welcome Student</span>
+                <img src="images/profile.jpg" alt="Profile">
+            </div>
+
+        </header>
+
+        <!-- Hero -->
+
+        <section class="hero">
+
+            <h1>Welcome to Student Hub</h1>
+
+            <p>
+
+                Student Hub is a simple portal where students can access
+                courses, attendance, assignments, notices and profile
+                information from one place.
+
+            </p>
+
+            <a href="student.html" class="btn">Get Started</a>
 
         </section>
 
-    </main>
+        <!-- Dashboard -->
 
-    <footer>
-        <hr>
-        <p>&copy; 2026 Student Hub Portal. All Rights Reserved.</p>
-        <p>
-            <a href="aboutus.html">About Us</a> |
-            <a href="contact.html">Contact</a>
-        </p>
-    </footer>
+        <section>
+
+            <div class="section-title">
+                <h2>Dashboard</h2>
+                <p>Quick Information</p>
+            </div>
+
+            <div class="card-container">
+
+                <div class="card">
+
+                    <i class="fas fa-user-graduate"></i>
+
+                    <h3>Students</h3>
+
+                    <p>500+ Students</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fas fa-book"></i>
+
+                    <h3>Courses</h3>
+
+                    <p>20+ Courses</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fas fa-chalkboard-teacher"></i>
+
+                    <h3>Faculty</h3>
+
+                    <p>50+ Faculty Members</p>
+
+                </div>
+
+                <div class="card">
+
+                    <i class="fas fa-bullhorn"></i>
+
+                    <h3>Notices</h3>
+
+                    <p>Latest Updates</p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+        <!-- Notice -->
+
+        <section>
+
+            <div class="section-title">
+                <h2>Latest Notice</h2>
+            </div>
+
+            <div class="notice">
+
+                <h3>Semester Examination</h3>
+
+                <p>
+
+                    Semester examinations will begin next month.
+                    Students should complete all assignments before
+                    the due date.
+
+                </p>
+
+            </div>
+
+        </section>
+
+        <!-- Gallery -->
+
+        <section>
+
+            <div class="section-title">
+                <h2>Gallery</h2>
+            </div>
+
+            <div class="gallery">
+
+                <img src="images/gallery1.jpg" alt="Gallery">
+
+                <img src="images/gallery2.jpg" alt="Gallery">
+
+                <img src="images/gallery3.jpg" alt="Gallery">
+
+                <img src="images/gallery4.jpg" alt="Gallery">
+
+                <img src="images/gallery5.jpg" alt="Gallery">
+
+                <img src="images/gallery6.jpg" alt="Gallery">
+
+            </div>
+
+        </section>
+
+        <!-- Footer -->
+
+        <footer>
+
+            <p>© 2026 Student Hub Portal | All Rights Reserved.</p>
+
+        </footer>
+
+    </div>
 
 </body>
 

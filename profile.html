@@ -4,71 +4,201 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Student Profile - Student Hub Portal</title>
+
     <link rel="stylesheet" href="css/style.css">
+
+    <!-- Icons -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
 </head>
+
 
 <body>
 
-    <header>
-        <h1>Student Hub Portal</h1>
 
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="aboutus.html">About Us</a> |
-            <a href="contact.html">Contact Us</a> |
-            <a href="admin.html">Admin</a> |
-            <a href="login.html">Login</a> |
-            <a href="notice.html">Notice</a> |
-            <a href="student.html">Student</a> |
-            <a href="assignment.html">Assignment</a> |
-            <a href="attendance.html">Attendance</a> |
-            <a href="courses.html">Courses</a> |
-            <a href="faculty.html">Faculty</a> |
-            <a href="profile.html">Profile</a>
-        </nav>
+<!-- SIDEBAR -->
 
-        <hr>
-    </header>
+<div class="sidebar">
 
-    <main>
+    <div class="logo">
 
-        <section>
+        <h2>Student Hub</h2>
 
-            <article>
+    </div>
 
-                <h2>Student Profile</h2>
 
-                <fieldset>
+    <ul>
 
-                    <legend><b>Profile Information</b></legend>
+        <li>
+            <a href="index.html">
+                <i class="fa fa-home"></i> Home
+            </a>
+        </li>
 
-                    <p><strong>Name:</strong> Yesha Kevadiya</p>
-                    <p><strong>Enrollment No:</strong> 24CS001</p>
-                    <p><strong>Department:</strong> Computer Science Engineering</p>
-                    <p><strong>Semester:</strong> 5</p>
-                    <p><strong>Email:</strong> yesha@gmail.com</p>
-                    <p><strong>Phone:</strong> 9876543210</p>
 
-                </fieldset>
+        <li>
+            <a href="student.html">
+                <i class="fa fa-user"></i> Student
+            </a>
+        </li>
 
-            </article>
 
-        </section>
+        <li>
+            <a href="courses.html">
+                <i class="fa fa-book"></i> Courses
+            </a>
+        </li>
 
-    </main>
 
-    <footer>
+        <li>
+            <a href="assignment.html">
+                <i class="fa fa-file"></i> Assignment
+            </a>
+        </li>
 
-        <hr>
 
-        <p>&copy; 2026 Student Hub Portal. All Rights Reserved.</p>
+        <li>
+            <a href="attendance.html">
+                <i class="fa fa-calendar"></i> Attendance
+            </a>
+        </li>
 
-        <p>
-            <a href="index.html">Back to Home</a>
-        </p>
 
-    </footer>
+        <li>
+            <a class="active" href="profile.html">
+                <i class="fa fa-id-card"></i> Profile
+            </a>
+        </li>
+
+
+        <li>
+            <a href="faculty.html">
+                <i class="fa fa-users"></i> Faculty
+            </a>
+        </li>
+
+
+        <li>
+            <a href="contact.html">
+                <i class="fa fa-phone"></i> Contact
+            </a>
+        </li>
+
+
+    </ul>
+
+</div>
+
+
+
+
+<!-- MAIN AREA -->
+
+<div class="main">
+
+
+    <!-- TOP BAR -->
+
+    <div class="topbar">
+
+        <h2>Student Profile</h2>
+
+
+        <div class="profile">
+
+            <span>Yesha Kevadiya</span>
+
+        </div>
+
+    </div>
+
+
+
+    <!-- CONTENT -->
+
+
+    <section>
+
+
+        <div class="card">
+
+
+            <h2>Profile Information</h2>
+
+
+            <br>
+
+
+            <fieldset>
+
+
+                <legend>
+                    <b>Student Details</b>
+                </legend>
+
+
+                <p>
+                    <strong>Name:</strong>
+                    Yesha Kevadiya
+                </p>
+
+
+                <p>
+                    <strong>Enrollment No:</strong>
+                    24CS001
+                </p>
+
+
+                <p>
+                    <strong>Department:</strong>
+                    Computer Science Engineering
+                </p>
+
+
+                <p>
+                    <strong>Semester:</strong>
+                    5
+                </p>
+
+
+                <p>
+                    <strong>Email:</strong>
+                    yesha@gmail.com
+                </p>
+
+
+                <p>
+                    <strong>Phone:</strong>
+                    9876543210
+                </p>
+
+
+            </fieldset>
+
+
+        </div>
+
+
+    </section>
+
+
+
+
+<footer>
+
+    <p>
+        © 2026 Student Hub Portal. All Rights Reserved.
+    </p>
+
+</footer>
+
+
+
+</div>
+
 
 </body>
 

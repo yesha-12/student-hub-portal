@@ -4,94 +4,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - Student Hub Portal</title>
+    <title>About Us | Student Hub</title>
+
     <link rel="stylesheet" href="css/style.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
 </head>
 
 <body>
 
-    <header>
-        <h1>Student Hub Portal</h1>
+<!-- Sidebar -->
 
-        <nav>
-            <a href="index.html">Home</a> |
-            <a href="aboutus.html">About Us</a> |
-            <a href="student.html">Student</a> |
-            <a href="courses.html">Courses</a> |
-            <a href="attendance.html">Attendance</a> |
-            <a href="assignment.html">Assignment</a> |
-            <a href="notice.html">Notice</a> |
-            <a href="faculty.html">Faculty</a> |
-            <a href="profile.html">Profile</a> |
-            <a href="contact.html">Contact</a> |
-            <a href="login.html">Login</a> |
-            <a href="admin.html">Admin</a>
-        </nav>
+<div class="sidebar">
 
-        <hr>
+    <div class="logo">
+        <img src="images/logo.png" alt="Logo">
+        <h2>Student Hub</h2>
+    </div>
+
+    <ul>
+
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+
+        <li><a href="aboutus.html" class="active"><i class="fas fa-users"></i> About</a></li>
+
+        <li><a href="student.html"><i class="fas fa-user-graduate"></i> Student</a></li>
+
+        <li><a href="courses.html"><i class="fas fa-book"></i> Courses</a></li>
+
+        <li><a href="faculty.html"><i class="fas fa-chalkboard-teacher"></i> Faculty</a></li>
+
+        <li><a href="attendance.html"><i class="fas fa-calendar-check"></i> Attendance</a></li>
+
+        <li><a href="assignment.html"><i class="fas fa-file-alt"></i> Assignment</a></li>
+
+        <li><a href="notice.html"><i class="fas fa-bullhorn"></i> Notice</a></li>
+
+        <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+
+        <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+
+        <li><a href="admin.html"><i class="fas fa-user-shield"></i> Admin</a></li>
+
+    </ul>
+
+</div>
+
+<!-- Main Content -->
+
+<div class="main">
+
+    <header class="topbar">
+
+        <h2>About Student Hub</h2>
+
+        <div class="profile">
+            <span>Student Portal</span>
+            <img src="images/profile.jpg" alt="Profile">
+        </div>
+
     </header>
 
-    <main>
+    <section>
 
-        <section>
+        <div class="section-title">
+            <h2>About Us</h2>
+            <p>Know more about our Student Hub Portal</p>
+        </div>
 
-            <article>
+        <div class="card">
 
-                <h2>About Us</h2>
+            <h3>Student Hub Portal</h3>
 
-                <p>
-                    Welcome to the Student Hub Portal.
-                    This website helps students access important information like
-                    assignments, attendance, notices, courses, faculty details,
-                    and student profiles.
-                </p>
+            <p>
+                Student Hub Portal is a simple web application developed
+                for college students. It provides information about
+                courses, attendance, assignments, faculty members,
+                notices, and student profiles.
+            </p>
 
-            </article>
+            <br>
 
-        </section>
+            <p>
+                This project is created using HTML5 and CSS3 for academic
+                practical purposes. It helps students access important
+                academic information through a simple and user-friendly
+                interface.
+            </p>
 
-        <section>
+        </div>
 
-            <article>
+    </section>
 
-                <h2>Our Mission</h2>
+    <section>
 
-                <p>
-                    Our mission is to provide students with a simple and
-                    easy-to-use online portal for academic activities.
-                </p>
+        <div class="section-title">
+            <h2>Our Features</h2>
+        </div>
 
-            </article>
+        <div class="card-container">
 
-        </section>
+            <div class="card">
+                <i class="fas fa-book"></i>
+                <h3>Courses</h3>
+                <p>View available courses and study materials.</p>
+            </div>
 
-        <section>
+            <div class="card">
+                <i class="fas fa-calendar-check"></i>
+                <h3>Attendance</h3>
+                <p>Check attendance records easily.</p>
+            </div>
 
-            <article>
+            <div class="card">
+                <i class="fas fa-file-alt"></i>
+                <h3>Assignments</h3>
+                <p>View and submit assignments on time.</p>
+            </div>
 
-                <h2>Services</h2>
+            <div class="card">
+                <i class="fas fa-bullhorn"></i>
+                <h3>Notice Board</h3>
+                <p>Read the latest college announcements.</p>
+            </div>
 
-                <ul>
-                    <li>Student Registration</li>
-                    <li>Course Information</li>
-                    <li>Attendance Records</li>
-                    <li>Assignment Updates</li>
-                    <li>Faculty Details</li>
-                    <li>Latest Notices</li>
-                </ul>
+        </div>
 
-            </article>
-
-        </section>
-
-    </main>
+    </section>
 
     <footer>
-        <hr>
-        <p>&copy; 2026 Student Hub Portal. All Rights Reserved.</p>
-        <p><a href="index.html">Back to Home</a></p>
+        <p>&copy; 2026 Student Hub Portal | All Rights Reserved.</p>
     </footer>
 
-</body>
+</div>
 
+</body>
 </html>
