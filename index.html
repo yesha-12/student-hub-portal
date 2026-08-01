@@ -1,96 +1,115 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Welcome</title>
-  <link rel="stylesheet" href="style.css">   
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Hub Portal</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-<div class="container">
-
     <header>
-        <h2>Title Page</h2>
+        <h1>Student Hub Portal</h1>
+
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="aboutus.html">About Us</a> |
+            <a href="contact.html">Contact Us</a> |
+            <a href="admin.html">Admin</a> |
+            <a href="login.html">Login</a> |
+            <a href="notice.html">Notice</a> |
+            <a href="student.html">Student</a> |
+            <a href="assignment.html">Assignment</a> |
+            <a href="attendance.html">Attendance</a> |
+            <a href="courses.html">Courses</a> |
+            <a href="faculty.html">Faculty</a> |
+            <a href="profile.html">Profile</a>
+        </nav>
+
+        <hr>
     </header>
 
-    <h1>Home Page</h1>
+    <main>
 
-    <nav>
-        <a href="aboutus.html">About Us</a> |
-        <a href="contact.html">Contact Us</a> |
-        <a href="admin.html">Admin</a> |
-        <a href="login.html">Login</a> |
-        <a href="notice.html">Notice</a> |
-        <a href="student.html">Student</a> |
-        <a href="assignment.html">Assignment</a> |
-        <a href="attendance.html">Attendance</a> |
-        <a href="courses.html">Courses</a> |
-        <a href="faculty.html">Faculty</a> |
-        <a href="index.html">Index</a> |
-        <a href="profile.html">Profile</a>
-    </nav>
+        <section>
 
-    <br><br>
+            <article>
 
-    <form>
+                <h2>Home Page</h2>
 
-        <label>Full Name</label>
-        <input type="text" placeholder="Enter your name">
-        <br><br>
+                <form>
 
-        <label>Enrollment Number</label>
-        <input type="text" placeholder="Enter Enrollment No">
-        <br><br>
+                    <label for="fullname">Full Name</label><br>
+                    <input type="text" id="fullname" name="fullname" placeholder="Enter your name"><br><br>
 
-        <label>Email ID</label>
-        <input type="email" placeholder="Enter Email">
-        <br><br>
+                    <label for="enrollment">Enrollment Number</label><br>
+                    <input type="text" id="enrollment" name="enrollment" placeholder="Enter Enrollment No"><br><br>
 
-        <label>Contact Number</label>
-        <input type="tel" placeholder="Enter Mobile Number">
-        <br><br>
+                    <label for="email">Email ID</label><br>
+                    <input type="email" id="email" name="email" placeholder="Enter Email"><br><br>
 
-        <label>Department</label>
-        <input type="text" placeholder="Computer Science">
-        <br><br>
+                    <label for="contact">Contact Number</label><br>
+                    <input type="tel" id="contact" name="contact" placeholder="Enter Mobile Number"><br><br>
 
-        <label>Semester</label>
-        <select>
-            <option>Select Semester</option>
-            <option>Semester 1</option>
-            <option>Semester 2</option>
-            <option>Semester 3</option>
-            <option>Semester 4</option>
-            <option>Semester 5</option>
-            <option>Semester 6</option>
-            <option>Semester 7</option>
-            <option>Semester 8</option>
-        </select>
-        <br><br>
+                    <label for="department">Department</label><br>
+                    <input type="text" id="department" name="department" placeholder="Computer Science"><br><br>
 
-        <label>Gender</label>
-        <input type="radio" name="gender"> Male
-        <input type="radio" name="gender"> Female
-        <input type="radio" name="gender"> Other
-        <br><br>
+                    <label for="semester">Semester</label><br>
+                    <select id="semester" name="semester">
+                        <option>Select Semester</option>
+                        <option>Semester 1</option>
+                        <option>Semester 2</option>
+                        <option>Semester 3</option>
+                        <option>Semester 4</option>
+                        <option>Semester 5</option>
+                        <option>Semester 6</option>
+                        <option>Semester 7</option>
+                        <option>Semester 8</option>
+                    </select>
+                    <br><br>
 
-        <label>Date of Birth</label>
-        <input type="date">
-        <br><br>
+                    <label>Gender</label><br>
+                    <input type="radio" id="male" name="gender" value="Male">
+                    <label for="male">Male</label>
 
-        <label>Address</label>
-        <textarea rows="4" cols="30"></textarea>
-        <br><br>
+                    <input type="radio" id="female" name="gender" value="Female">
+                    <label for="female">Female</label>
 
-        <label>Password</label>
-        <input type="password">
-        <br><br>
+                    <input type="radio" id="other" name="gender" value="Other">
+                    <label for="other">Other</label>
+                    <br><br>
 
-        <button type="submit">Submit</button>
-        <button type="reset">Reset</button>
+                    <label for="dob">Date of Birth</label><br>
+                    <input type="date" id="dob" name="dob"><br><br>
 
-    </form>
-    </div>
+                    <label for="address">Address</label><br>
+                    <textarea id="address" name="address" rows="4" cols="30"></textarea><br><br>
+
+                    <label for="password">Password</label><br>
+                    <input type="password" id="password" name="password"><br><br>
+
+                    <button type="submit">Submit</button>
+                    <button type="reset">Reset</button>
+
+                </form>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2026 Student Hub Portal. All Rights Reserved.</p>
+        <p>
+            <a href="aboutus.html">About Us</a> |
+            <a href="contact.html">Contact</a>
+        </p>
+    </footer>
 
 </body>
+
 </html>

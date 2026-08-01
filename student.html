@@ -1,56 +1,140 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Student Details</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Hub | Students</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
 
-    <h1>Student Details</h1>
+    <!-- Navigation -->
+    <nav class="sidebar">
+        <h2 class="logo">Student Hub</h2>
 
-    <hr>
+        <ul>
+            <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="aboutus.html"><i class="fas fa-info-circle"></i> About</a></li>
+            <li><a href="student.html" class="active"><i class="fas fa-user-graduate"></i> Students</a></li>
+            <li><a href="courses.html"><i class="fas fa-book"></i> Courses</a></li>
+            <li><a href="assignment.html"><i class="fas fa-file-alt"></i> Assignments</a></li>
+            <li><a href="attendance.html"><i class="fas fa-calendar-check"></i> Attendance</a></li>
+            <li><a href="notice.html"><i class="fas fa-bullhorn"></i> Notices</a></li>
+            <li><a href="faculty.html"><i class="fas fa-chalkboard-teacher"></i> Faculty</a></li>
+            <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+            <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            <li><a href="login.html"><i class="fas fa-sign-out-alt"></i> Logout</a></li>
+        </ul>
+    </nav>
 
-    <table border="1" cellpadding="8">
+    <!-- Main Content -->
+    <div class="main-content">
 
-        <tr>
-            <th>Field</th>
-            <th>Information</th>
-        </tr>
+        <header>
+            <h1>Student Information</h1>
+            <p>Manage and view student details.</p>
+        </header>
 
-        <tr>
-            <td>Name</td>
-            <td>Yesha Kevadiya</td>
-        </tr>
+        <!-- Search -->
+        <section class="search-box">
+            <input type="text" placeholder="Search Student...">
+            <button>Search</button>
+        </section>
 
-        <tr>
-            <td>Enrollment Number</td>
-            <td>24CS001</td>
-        </tr>
+        <!-- Student Table -->
+        <section class="table-container">
 
-        <tr>
-            <td>Department</td>
-            <td>Computer Science Engineering</td>
-        </tr>
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Year</th>
+                        <th>Email</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
 
-        <tr>
-            <td>Semester</td>
-            <td>5</td>
-        </tr>
+                <tbody>
 
-        <tr>
-            <td>Email</td>
-            <td>yesha@gmail.com</td>
-        </tr>
+                    <tr>
+                        <td>101</td>
+                        <td>Rahul Patel</td>
+                        <td>CSE</td>
+                        <td>2nd</td>
+                        <td>rahul@gmail.com</td>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
 
-        <tr>
-            <td>Contact Number</td>
-            <td>9876543210</td>
-        </tr>
+                    <tr>
+                        <td>102</td>
+                        <td>Priya Shah</td>
+                        <td>IT</td>
+                        <td>3rd</td>
+                        <td>priya@gmail.com</td>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
 
-    </table>
+                    <tr>
+                        <td>103</td>
+                        <td>Amit Kumar</td>
+                        <td>CE</td>
+                        <td>1st</td>
+                        <td>amit@gmail.com</td>
+                        <td><span class="status inactive">Inactive</span></td>
+                    </tr>
 
-    <br>
+                    <tr>
+                        <td>104</td>
+                        <td>Sneha Patel</td>
+                        <td>EC</td>
+                        <td>4th</td>
+                        <td>sneha@gmail.com</td>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
 
-    <a href="index.html">Back to Home</a>
+                    <tr>
+                        <td>105</td>
+                        <td>Jay Mehta</td>
+                        <td>Mechanical</td>
+                        <td>2nd</td>
+                        <td>jay@gmail.com</td>
+                        <td><span class="status active">Active</span></td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </section>
+
+        <!-- Statistics -->
+        <section class="cards">
+
+            <div class="card">
+                <h2>150</h2>
+                <p>Total Students</p>
+            </div>
+
+            <div class="card">
+                <h2>120</h2>
+                <p>Present Today</p>
+            </div>
+
+            <div class="card">
+                <h2>30</h2>
+                <p>Absent Today</p>
+            </div>
+
+            <div class="card">
+                <h2>12</h2>
+                <p>Departments</p>
+            </div>
+
+        </section>
+
+    </div>
 
 </body>
 </html>

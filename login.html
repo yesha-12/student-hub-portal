@@ -1,38 +1,78 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Login</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Student Hub Portal</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
+
 <body>
 
-    <h1>Student Login</h1>
+    <header>
+        <h1>Student Hub Portal</h1>
 
-    <hr>
+        <nav>
+            <a href="index.html">Home</a> |
+            <a href="aboutus.html">About Us</a> |
+            <a href="contact.html">Contact Us</a> |
+            <a href="admin.html">Admin</a> |
+            <a href="login.html">Login</a> |
+            <a href="notice.html">Notice</a> |
+            <a href="student.html">Student</a> |
+            <a href="assignment.html">Assignment</a> |
+            <a href="attendance.html">Attendance</a> |
+            <a href="courses.html">Courses</a> |
+            <a href="faculty.html">Faculty</a> |
+            <a href="profile.html">Profile</a>
+        </nav>
 
-    <form>
+        <hr>
+    </header>
 
-        <label>Username:</label><br>
-        <input type="text"><br><br>
+    <main>
 
-        <label>Password:</label><br>
-        <input type="password"><br><br>
+        <section>
 
-        <input type="checkbox"> Remember Me
-        <br><br>
+            <article>
 
-        <input type="submit" value="Login">
-        <input type="reset" value="Clear">
+                <h2>Student Login</h2>
 
-    </form>
+                <form>
 
-    <br>
+                    <label for="username">Username:</label><br>
+                    <input type="text" id="username" name="username"><br><br>
 
-    <p>Don't have an account?</p>
-    <a href="index.html">Register Here</a>
+                    <label for="password">Password:</label><br>
+                    <input type="password" id="password" name="password"><br><br>
 
-    <br><br>
+                    <input type="checkbox" id="remember" name="remember">
+                    <label for="remember">Remember Me</label>
+                    <br><br>
 
-    <a href="index.html">Back to Home</a>
+                    <input type="submit" value="Login">
+                    <input type="reset" value="Clear">
+
+                </form>
+
+                <br>
+
+                <p>Don't have an account?</p>
+                <p><a href="index.html">Register Here</a></p>
+
+            </article>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <hr>
+        <p>&copy; 2026 Student Hub Portal. All Rights Reserved.</p>
+        <p><a href="index.html">Back to Home</a></p>
+    </footer>
 
 </body>
+
 </html>
