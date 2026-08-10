@@ -26,11 +26,11 @@
 
     <div class="logo">
 
-        <img src="images/logo.png" alt="Student Hub Logo">
+    <img src="images/profile.png" alt="Student Logo">
 
-        <h2>Student Hub</h2>
+    <h2>Student Hub</h2>
 
-    </div>
+</div>
 
 
     <ul>
@@ -119,15 +119,15 @@
 
     <h2>Student Dashboard</h2>
 
+    <button class="btn logout-btn">Logout</button>
 
     <div class="profile">
 
-        <img src="images/student.png" alt="Student">
+        <img class="student-profile" src="images/profile.png" alt="Profile">
 
-        <span>Student</span>
+        <span class="student-name"></span>
 
     </div>
-
 
 </div>
 
@@ -253,29 +253,32 @@
 
 <div class="contact-box">
 
-
 <h3>
     Student Information
 </h3>
 
-
 <p>
-    <b>Name:</b> Your Name
+    <b>Name:</b> <span class="student-name"></span>
 </p>
 
-
 <p>
-    <b>Department:</b> Computer Science Engineering
+    <b>Student ID:</b> <span class="student-id"></span>
 </p>
 
-
 <p>
-    <b>Semester:</b> 2nd Semester
+    <b>Department:</b> <span class="student-department"></span>
 </p>
 
+<p>
+    <b>Semester:</b> <span class="student-semester"></span>
+</p>
 
 <p>
-    <b>Email:</b> student@gmail.com
+    <b>Contact:</b> <span class="student-phone"></span>
+</p>
+
+<p>
+    <b>Email:</b> <span class="student-email"></span>
 </p>
 
 <a href="profile.html" class="btn">
@@ -294,7 +297,8 @@
 
 </footer>
 </div>
-
+<script src="javascript/auth.js"></script>
+<script src="javascript/script.js"></script>
 </body>
 
 </html>

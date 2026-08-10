@@ -37,6 +37,7 @@ body{
 
 .logo{
     text-align:center;
+    
     margin-bottom:30px;
 }
 
@@ -89,27 +90,57 @@ body{
 
 .topbar{
     background:#fff;
-    padding:18px 30px;
+    padding:22px 32px;
     display:flex;
     justify-content:space-between;
     align-items:center;
-    box-shadow:var(--shadow);
+    gap:18px;
+    box-shadow:0 20px 50px rgba(4,32,75,0.12);
+    border-bottom:1px solid rgba(4,32,75,0.08);
+    position:sticky;
+    top:0;
+    z-index:20;
+    backdrop-filter:blur(10px);
 }
 
 .topbar h2{
     color:var(--primary);
+    font-size:24px;
+    font-weight:700;
+    margin:0;
 }
 
 .profile{
     display:flex;
     align-items:center;
-    gap:10px;
+    gap:12px;
+    font-weight:600;
+    color:var(--primary);
+    padding:10px 14px;
+    border-radius:18px;
+    background:#f5f8ff;
+    box-shadow:0 10px 30px rgba(4,32,75,0.08);
 }
 
 .profile img{
-    width:40px;
-    height:40px;
+    width:45px;
+    height:45px;
     border-radius:50%;
+    object-fit:cover;
+    border:2px solid rgba(4,32,75,0.15);
+}
+
+.profile span{
+    font-size:16px;
+}
+
+/* Hide profile block until user logs in; add .logged-in to show */
+.profile{
+    display:none !important;
+}
+
+.profile.logged-in{
+    display:flex !important;
 }
 
 
@@ -404,8 +435,16 @@ footer{
     background:var(--primary);
     color:#fff;
     text-align:center;
-    padding:20px;
+    padding:22px 30px;
     margin-top:40px;
+    border-radius:18px 18px 0 0;
+    box-shadow:0 -10px 30px rgba(4,32,75,0.14);
+}
+
+footer p{
+    margin:0;
+    font-size:15px;
+    letter-spacing:0.03em;
 }
 
 footer a{
@@ -452,4 +491,46 @@ section{
     grid-template-columns:1fr;
 }
 
+}
+/* Sidebar Profile Image */
+
+.logo img{
+    display:none;
+}
+
+
+/* Keep sidebar fixed on all pages */
+
+.sidebar{
+    position:fixed;
+    left:0;
+    top:0;
+    width:20%;
+    height:100vh;
+    overflow-y:auto;
+}
+/* Right Corner Profile */
+
+.profile{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:600;
+    color:var(--primary);
+    padding:10px 14px;
+    border-radius:18px;
+    background:#f5f8ff;
+    box-shadow:0 10px 30px rgba(4,32,75,0.08);
+}
+
+.profile img{
+    width:45px;
+    height:45px;
+    border-radius:50%;
+    object-fit:cover;
+    border:2px solid rgba(4,32,75,0.15);
+}
+
+.profile span{
+    font-size:16px;
 }
