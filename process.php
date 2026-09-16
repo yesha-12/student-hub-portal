@@ -50,20 +50,14 @@ function registerStudent(array $request, string $dataDirectory): void
 	];
 	$password = (string) ($request['password'] ?? '');
 
-	if (in_array('', $student, true) || $password === '') {
-		respond(false, 'All student fields are required.', 422);
-	}
-	if (!filter_var($student['email'], FILTER_VALIDATE_EMAIL)) {
-		respond(false, 'Please provide a valid email address.', 422);
-	}
-	if (strlen($password) < 6) {
-		respond(false, 'Password must contain at least 6 characters.', 422);
-	}
+	checkRequiredFields($student, 'All student fields are required.');
+	validatePassword($password);
+	validateEmail($student['email']);
 
 	$students = readCollection($dataDirectory . DIRECTORY_SEPARATOR . 'students.json');
 	foreach ($students as $existingStudent) {
 		if ($existingStudent['studentId'] === $student['studentId'] || $existingStudent['email'] === $student['email']) {
-			respond(false, 'A student with this ID or email already exists.', 409);
+			respond(false, 'Student exists.', 409);
 		}
 	}
 
@@ -73,7 +67,7 @@ function registerStudent(array $request, string $dataDirectory): void
 	writeCollection($dataDirectory . DIRECTORY_SEPARATOR . 'students.json', $students);
 
 	unset($student['password']);
-	respond(true, 'Student registered successfully.', 201, ['student' => $student]);
+	respond(true, 'Student registered.', 201, ['student' => $student]);
 }
 
 function loginStudent(array $request, string $dataDirectory): void
@@ -89,7 +83,7 @@ function loginStudent(array $request, string $dataDirectory): void
 		}
 	}
 
-	respond(false, 'Invalid student ID or password.', 401);
+	respond(false, 'Invalid ID or password.', 401);
 }
 
 function updateStudent(array $request, string $dataDirectory): void
@@ -117,18 +111,19 @@ function updateStudent(array $request, string $dataDirectory): void
 	$student['contactNumber'] = clean($request['contactNumber'] ?? $student['contactNumber']);
 	$student['profilePic'] = clean($request['profilePic'] ?? $student['profilePic'] ?? '');
 
-	if (in_array('', $student, true)) {
-		respond(false, 'Fill all fields.', 422);
-	}
-	if (!filter_var($student['email'], FILTER_VALIDATE_EMAIL)) {
-		respond(false, 'Invalid email.', 422);
-	}
+	$required = [
+		'name' => $student['name'],
+		'email' => $student['email'],
+		'department' => $student['department'],
+		'semester' => $student['semester'],
+		'contactNumber' => $student['contactNumber'],
+	];
+	checkRequiredFields($required, 'Fill all fields.');
+	validateEmail($student['email']);
 
 	$password = (string) ($request['password'] ?? '');
 	if ($password !== '') {
-		if (strlen($password) < 6) {
-			respond(false, 'Password short.', 422);
-		}
+		validatePassword($password);
 		$student['password'] = password_hash($password, PASSWORD_DEFAULT);
 	}
 
@@ -154,18 +149,39 @@ function saveContactMessage(array $request, string $dataDirectory): void
 		'createdAt' => date(DATE_ATOM),
 	];
 
-	if (in_array('', $message, true)) {
-		respond(false, 'Name, email, and message are required.', 422);
-	}
-	if (!filter_var($message['email'], FILTER_VALIDATE_EMAIL)) {
-		respond(false, 'Please provide a valid email address.', 422);
-	}
+	checkRequiredFields([
+		'name' => $message['name'],
+		'email' => $message['email'],
+		'message' => $message['message'],
+	], 'Name, email, and message are required.');
+	validateEmail($message['email']);
 
 	$messagesFile = $dataDirectory . DIRECTORY_SEPARATOR . 'messages.json';
 	$messages = readCollection($messagesFile);
 	$messages[] = $message;
 	writeCollection($messagesFile, $messages);
-	respond(true, 'Message sent successfully.', 201);
+	respond(true, 'Message sent.', 201);
+}
+
+function checkRequiredFields(array $fields, string $message): void
+{
+	if (in_array('', $fields, true)) {
+		respond(false, $message, 422);
+	}
+}
+
+function validateEmail(string $email): void
+{
+	if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+		respond(false, 'Please provide a valid email address.', 422);
+	}
+}
+
+function validatePassword(string $password): void
+{
+	if (strlen($password) < 6) {
+		respond(false, 'Password must contain at least 6 characters.', 422);
+	}
 }
 
 function readCollection(string $file): array

@@ -28,28 +28,32 @@
         localStorage.setItem("isLoggedIn", "true");
     }
 
-    function saveStudentToServer(student) {
+    function sendJsonRequest(payload) {
         return fetch("process.php", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-                action: "register",
-                name: student.name,
-                studentId: student.studentId,
-                email: student.email,
-                department: student.department,
-                semester: student.semester,
-                contactNumber: student.contactNumber,
-                password: student.password,
-                profilePic: student.profilePic
-            })
+            body: JSON.stringify(payload)
         }).then(function (response) {
             return response.json().then(function (result) {
                 if (!response.ok || !result.success) {
-                    throw new Error(result.message || "Unable to save student data.");
+                    throw new Error(result.message || "Request failed.");
                 }
-                return result.student;
+                return result.student || result;
             });
+        });
+    }
+
+    function saveStudentToServer(student) {
+        return sendJsonRequest({
+            action: "register",
+            name: student.name,
+            studentId: student.studentId,
+            email: student.email,
+            department: student.department,
+            semester: student.semester,
+            contactNumber: student.contactNumber,
+            password: student.password,
+            profilePic: student.profilePic
         });
     }
 
@@ -166,6 +170,106 @@
         });
     }
 
+    function updateStudentOnServer(student) {
+        return sendJsonRequest({
+            action: "update",
+            studentId: student.studentId,
+            name: student.name,
+            email: student.email,
+            department: student.department,
+            semester: student.semester,
+            contactNumber: student.contactNumber,
+            password: student.password || "",
+            profilePic: student.profilePic || ""
+        });
+    }
+
+    function setupProfileForm() {
+        if (getCurrentPage() !== "profile.html") {
+            return;
+        }
+
+        var form = document.getElementById("profileForm");
+        if (!form) {
+            return;
+        }
+
+        var student = getStudentData();
+        if (!student) {
+            return;
+        }
+
+        form.profileName.value = student.name || "";
+        form.studentId.value = student.studentId || "";
+        form.profileEmail.value = student.email || "";
+        form.profileDepartment.value = student.department || "";
+        form.profileSemester.value = student.semester || "";
+        form.profileContact.value = student.contactNumber || "";
+
+        var preview = document.getElementById("profilePreview");
+        if (preview) {
+            preview.src = student.profilePic || "images/profile.png";
+        }
+
+        form.addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            var name = form.profileName.value.trim();
+            var email = form.profileEmail.value.trim();
+            var department = form.profileDepartment.value.trim();
+            var semester = form.profileSemester.value.trim();
+            var contactNumber = form.profileContact.value.trim();
+            var password = form.profilePassword.value;
+            var studentId = form.studentId.value.trim();
+            var file = form.profilePic.files && form.profilePic.files[0] ? form.profilePic.files[0] : null;
+
+            if (!name || !email || !department || !semester || !contactNumber || !studentId) {
+                alert("Please fill all fields.");
+                return;
+            }
+
+            if (password && password.length < 6) {
+                alert("Password must contain at least 6 characters.");
+                return;
+            }
+
+            var saveData = function (profilePic) {
+                updateStudentOnServer({
+                    studentId: studentId,
+                    name: name,
+                    email: email,
+                    department: department,
+                    semester: semester,
+                    contactNumber: contactNumber,
+                    password: password,
+                    profilePic: profilePic || student.profilePic || ""
+                }).then(function (updatedStudent) {
+                    saveStudentData(updatedStudent);
+                    alert("Updated.");
+                    window.location.href = "profile.html";
+                }).catch(function (error) {
+                    alert(error.message);
+                });
+            };
+
+            if (file) {
+                if (!file.type.startsWith("image/")) {
+                    alert("Please upload a valid image file.");
+                    return;
+                }
+
+                readFileAsDataURL(file).then(function (imageData) {
+                    saveData(imageData);
+                }).catch(function () {
+                    alert("Unable to read the profile picture.");
+                });
+                return;
+            }
+
+            saveData(student.profilePic || "");
+        });
+    }
+
     function setupLoginForm() {
         if (getCurrentPage() !== "login.html") {
             return;
@@ -279,6 +383,7 @@
         populateStudentInfo();
         updateAuthNavigation();
         attachLogoutButtons();
+        setupProfileForm();
         setupLoginForm();
     });
 })();
