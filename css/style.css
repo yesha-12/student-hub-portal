@@ -379,6 +379,14 @@ form textarea{
     border:1px solid #ccc;
     border-radius:5px;
     outline:none;
+    transition:0.2s ease;
+}
+
+form input:focus,
+form select:focus,
+form textarea:focus{
+    border-color:var(--secondary);
+    box-shadow:0 0 0 3px rgba(8,63,130,0.12);
 }
 
 form textarea{
@@ -503,7 +511,7 @@ section{
 /* Sidebar Profile Image */
 
 .logo img{
-    display:none;
+    display:block;
 }
 
 
@@ -517,7 +525,6 @@ section{
     height:100vh;
     overflow-y:auto;
 }
-/* Right Corner Profile */
 
 .profile{
     display:flex;
