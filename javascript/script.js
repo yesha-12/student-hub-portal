@@ -196,9 +196,31 @@ if (contactForm && document.title.toLowerCase().includes("contact")) {
 
         }
 
-        alert("Message sent successfully.");
+        var fields = contactForm.querySelectorAll("input, textarea");
+        var messageData = {
+            action: "contact",
+            name: fields[0].value.trim(),
+            email: fields[1].value.trim(),
+            message: fields[2].value.trim()
+        };
 
-        contactForm.reset();
+        fetch("process.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(messageData)
+        }).then(function (response) {
+            return response.json().then(function (result) {
+                if (!response.ok || !result.success) {
+                    throw new Error(result.message || "Unable to send your message.");
+                }
+                return result;
+            });
+        }).then(function (result) {
+            alert(result.message);
+            contactForm.reset();
+        }).catch(function (error) {
+            alert(error.message);
+        });
 
     });
 

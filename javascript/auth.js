@@ -28,6 +28,31 @@
         localStorage.setItem("isLoggedIn", "true");
     }
 
+    function saveStudentToServer(student) {
+        return fetch("process.php", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+                action: "register",
+                name: student.name,
+                studentId: student.studentId,
+                email: student.email,
+                department: student.department,
+                semester: student.semester,
+                contactNumber: student.contactNumber,
+                password: student.password,
+                profilePic: student.profilePic
+            })
+        }).then(function (response) {
+            return response.json().then(function (result) {
+                if (!response.ok || !result.success) {
+                    throw new Error(result.message || "Unable to save student data.");
+                }
+                return result.student;
+            });
+        });
+    }
+
     window.logoutStudent = function () {
         localStorage.removeItem("studentData");
         localStorage.removeItem("isLoggedIn");
@@ -235,8 +260,12 @@
                     profilePic: imageData
                 };
 
-                saveStudentData(studentRecord);
-                window.location.href = "student.html";
+                saveStudentToServer(studentRecord).then(function (savedStudent) {
+                    saveStudentData(savedStudent);
+                    window.location.href = "student.html";
+                }).catch(function (error) {
+                    alert(error.message);
+                });
             }).catch(function () {
                 alert("Unable to read the profile picture. Please try again.");
             });
