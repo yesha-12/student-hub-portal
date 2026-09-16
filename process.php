@@ -27,6 +27,9 @@ try {
 		case 'contact':
 			saveContactMessage($request, $dataDirectory);
 			break;
+		case 'update':
+			updateStudent($request, $dataDirectory);
+			break;
 		default:
 			respond(false, 'Unknown action.', 400);
 	}
@@ -87,6 +90,59 @@ function loginStudent(array $request, string $dataDirectory): void
 	}
 
 	respond(false, 'Invalid student ID or password.', 401);
+}
+
+function updateStudent(array $request, string $dataDirectory): void
+{
+	$studentId = clean($request['studentId'] ?? '');
+	$students = readCollection($dataDirectory . DIRECTORY_SEPARATOR . 'students.json');
+	$index = -1;
+
+	foreach ($students as $i => $student) {
+		if ($student['studentId'] === $studentId) {
+			$index = $i;
+			break;
+		}
+	}
+
+	if ($index === -1) {
+		respond(false, 'Student not found.', 404);
+	}
+
+	$student = $students[$index];
+	$student['name'] = clean($request['name'] ?? $student['name']);
+	$student['email'] = strtolower(clean($request['email'] ?? $student['email']));
+	$student['department'] = clean($request['department'] ?? $student['department']);
+	$student['semester'] = clean($request['semester'] ?? $student['semester']);
+	$student['contactNumber'] = clean($request['contactNumber'] ?? $student['contactNumber']);
+	$student['profilePic'] = clean($request['profilePic'] ?? $student['profilePic'] ?? '');
+
+	if (in_array('', $student, true)) {
+		respond(false, 'Fill all fields.', 422);
+	}
+	if (!filter_var($student['email'], FILTER_VALIDATE_EMAIL)) {
+		respond(false, 'Invalid email.', 422);
+	}
+
+	$password = (string) ($request['password'] ?? '');
+	if ($password !== '') {
+		if (strlen($password) < 6) {
+			respond(false, 'Password short.', 422);
+		}
+		$student['password'] = password_hash($password, PASSWORD_DEFAULT);
+	}
+
+	foreach ($students as $i => $existingStudent) {
+		if ($i !== $index && ($existingStudent['email'] === $student['email'] || $existingStudent['studentId'] === $student['studentId'])) {
+			respond(false, 'Student exists.', 409);
+		}
+	}
+
+	$students[$index] = $student;
+	writeCollection($dataDirectory . DIRECTORY_SEPARATOR . 'students.json', $students);
+
+	unset($student['password']);
+	respond(true, 'Updated.', 200, ['student' => $student]);
 }
 
 function saveContactMessage(array $request, string $dataDirectory): void
