@@ -293,7 +293,7 @@
             var profilePic = document.getElementById("profilePic");
 
             if (!studentName || !studentId || !email || !department || !semester || !contactNumber || !password || !profilePic) {
-                alert("Login form is not ready.");
+                alert("The registration form is incomplete. Please refresh the page and try again.");
                 return;
             }
 

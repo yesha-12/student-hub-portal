@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practical List | Student Hub</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.1/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <style>
+        .lab-wrapper {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+
+        .lab-card {
+            background: #fff;
+            border-radius: 18px;
+            box-shadow: 0 15px 35px rgba(4, 32, 75, 0.08);
+            padding: 28px;
+            margin: 25px 0;
+        }
+
+        .lab-card h2, .lab-card h3 {
+            color: #04204b;
+            margin-bottom: 18px;
+        }
+
+        .lab-summary {
+            overflow-x: auto;
+        }
+
+        table {
+            margin-top: 12px;
+            font-size: 15px;
+        }
+
+        th, td {
+            vertical-align: top;
+            line-height: 1.5;
+            padding: 12px 10px;
+        }
+
+        .lab-detail {
+            margin-top: 20px;
+            padding-top: 10px;
+            border-top: 2px solid #eef3ff;
+        }
+
+        .lab-detail h4 {
+            color: #083f82;
+            margin: 18px 0 10px;
+        }
+
+        .lab-detail ul {
+            margin-left: 20px;
+            color: #444;
+            line-height: 1.8;
+        }
+
+        .page-badge {
+            display: inline-block;
+            background: #eef5ff;
+            color: #083f82;
+            border-radius: 999px;
+            padding: 8px 14px;
+            font-size: 13px;
+            font-weight: 600;
+            margin-bottom: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="sidebar">
+    <div class="logo">
+        <img src="images/profile.png" alt="Student Logo">
+        <h2>Student Hub</h2>
+    </div>
+
+    <ul>
+        <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+        <li><a href="aboutus.html"><i class="fas fa-users"></i> About</a></li>
+        <li><a href="student.html"><i class="fas fa-user-graduate"></i> Student</a></li>
+        <li><a href="courses.html"><i class="fas fa-book"></i> Courses</a></li>
+        <li><a href="faculty.html"><i class="fas fa-chalkboard-teacher"></i> Faculty</a></li>
+        <li><a href="attendance.html"><i class="fas fa-calendar-check"></i> Attendance</a></li>
+        <li><a href="assignment.html"><i class="fas fa-file-alt"></i> Assignment</a></li>
+        <li><a href="notice.html"><i class="fas fa-bullhorn"></i> Notice</a></li>
+        <li><a href="practical.html" class="active"><i class="fas fa-list-check"></i> Practical</a></li>
+        <li><a href="profile.html"><i class="fas fa-user"></i> Profile</a></li>
+        <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+        <li><a href="login.html"><i class="fas fa-sign-in-alt"></i> Login</a></li>
+        <li><a href="admin.html"><i class="fas fa-user-shield"></i> Admin</a></li>
+    </ul>
+</div>
+
+<div class="main">
+    <header class="topbar">
+        <h2>Practical List</h2>
+        <div class="profile">
+            <img src="images/yesha.png" alt="Profile">
+            <span>Yesha Kevadiya</span>
+        </div>
+    </header>
+
+    <section>
+        <div class="lab-wrapper">
+            <div class="lab-card">
+                <span class="page-badge">Semester Practical Summary</span>
+                <h2>1. Practical Summary</h2>
+
+                <div class="lab-summary">
+                    <table border="1" cellpadding="8" cellspacing="0" width="100%">
+                        <thead>
+                            <tr>
+                                <th>No.</th>
+                                <th>Practical Title</th>
+                                <th>Core Technology / Concept</th>
+                                <th>CO Mapping</th>
+                                <th>PO Mapping</th>
+                                <th>Hours</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>1</td><td>Project Initiation, Requirement Analysis, Sitemap, Wireframe, and GitHub Setup</td><td>GitHub, requirements, sitemap, wireframe</td><td>CO1</td><td>PO1(3), PO2(2), PO3(3), PO4(2), PO5(3), PO9(1), PO10(3)</td><td>04</td></tr>
+                            <tr><td>2</td><td>Semantic HTML5 Pages with Accessibility-Ready Structure</td><td>Semantic HTML5, accessibility</td><td>CO1, CO2</td><td>PO1(3), PO2(2), PO3(3), PO4(2), PO5(3), PO9(1), PO10(3)</td><td>04</td></tr>
+                            <tr><td>3</td><td>Responsive UI Design using CSS2.0/CSS3.0, CSS Grid and Flexbox</td><td>CSS Grid, Flexbox</td><td>CO2</td><td>PO1(3), PO2(2), PO3(3), PO4(2), PO5(3), PO9(1), PO10(3)</td><td>04</td></tr>
+                            <tr><td>4</td><td>JavaScript, JavaScript DOM Manipulation, Event Handling, and UI Interactivity</td><td>DOM, events, localStorage</td><td>CO3, CO4</td><td>PO1(3), PO2(3), PO3(3), PO4(2), PO5(3), PO9(1), PO10(3)</td><td>04</td></tr>
+                            <tr><td>5</td><td>Registration Form with Frontend Validation and User-Friendly Error Handling</td><td>Forms, JS validation</td><td>CO1, CO3</td><td>PO1(3), PO2(3), PO3(3), PO4(2), PO5(3), PO9(1), PO10(3)</td><td>04</td></tr>
+                            <tr><td>6</td><td>Rendering External JSON Data using Fetch API, Search and Filter</td><td>JSON, Fetch API</td><td>CO3, CO4</td><td>PO1(3), PO2(3), PO3(3), PO4(2), PO5(3), PO9(1), PO10(3)</td><td>04</td></tr>
+                            <tr><td>7</td><td>PHP Form Processing with Server-Side Validation and CSV/JSON File Storage</td><td>PHP form processing, CSV/JSON file storage</td><td>CO1, CO5</td><td>PO1(3), PO2(3), PO3(3), PO4(3), PO5(3), PO9(1), PO10(3), PO11(2), PO12(3)</td><td>04</td></tr>
+                            <tr><td>8</td><td>MySQL Schema Design, ER Model and Database Connectivity</td><td>MySQL schema</td><td>CO1, CO5</td><td>PO1(3), PO2(3), PO3(3), PO4(3), PO5(3), PO9(1), PO10(3), PO11(2), PO12(3)</td><td>04</td></tr>
+                            <tr><td>9</td><td>Secure User Registration with Database Insert, Duplicate Email Check, and Password Hashing</td><td>Secure registration, hashing</td><td>CO1, CO3, CO5</td><td>PO1(3), PO2(3), PO3(3), PO4(3), PO5(3), PO9(1), PO10(3), PO11(2), PO12(3)</td><td>04</td></tr>
+                            <tr><td>10</td><td>Secure Login/Logout with Sessions, Role-Based Access, Timeout, and Remember-Me Token</td><td>Sessions, RBAC, timeout</td><td>CO1, CO5</td><td>PO1(3), PO2(3), PO3(3), PO4(3), PO5(3), PO9(1), PO10(3), PO11(2), PO12(3)</td><td>02</td></tr>
+                            <tr><td>11</td><td>Student Management CRUD with Search, Filter, and MySql Statements</td><td>Student CRUD</td><td>CO1, CO4, CO5</td><td>PO1(3), PO2(3), PO3(3), PO4(3), PO5(3), PO9(1), PO10(3), PO11(2), PO12(3)</td><td>04</td></tr>
+                            <tr><td>12</td><td>Event Management CRUD with Poster Upload and File Validation</td><td>Event CRUD, file upload</td><td>CO1, CO4, CO5</td><td>PO1(3), PO2(3), PO3(3), PO4(3), PO5(3), PO9(1), PO10(3), PO11(2), PO12(3)</td><td>04</td></tr>
+                            <tr><td>13</td><td>PHP JSON API and AJAX/Fetch-Based CRUD without Page Reload</td><td>PHP JSON API, AJAX/Fetch</td><td>CO3, CO4, CO5</td><td>PO1(3), PO2(3), PO3(3), PO4(3), PO5(3), PO9(1), PO10(3), PO11(2), PO12(3)</td><td>04</td></tr>
+                            <tr><td>14</td><td>Admin Dashboard with Role-Based Access Control and Dynamic Menu</td><td>Admin dashboard</td><td>CO1, CO4, CO5</td><td>PO1(3), PO2(3), PO3(3), PO4(3), PO5(3), PO9(1), PO10(3), PO11(2), PO12(3)</td><td>06</td></tr>
+                            <tr><td>15</td><td>Final Integration, Testing, Documentation, GitHub Submission, and Local Deployment</td><td>Integration, testing, deployment</td><td>CO2, CO4, CO5</td><td>PO1(3), PO2(3), PO3(3), PO4(3), PO5(3), PO9(1), PO10(3), PO11(2), PO12(3)</td><td>04</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="lab-card">
+                <h2>2. Detailed Practical List</h2>
+
+                <div class="lab-detail">
+                    <h4>Practical 1: Project Initiation, Requirement Analysis, Sitemap, Wireframe, and GitHub Setup</h4>
+                    <p><strong>Problem Definition:</strong> Initiate the semester-long StudentHub portal by identifying the problem scope, user roles, key modules, navigation flow, and minimum 10 pages. Create a sitemap, low-fidelity wireframe, project folder structure, README file, and GitHub repository.</p>
+
+                    <p><strong>Key Questions / Analysis / Interpretation:</strong></p>
+                    <ol>
+                        <li>What is URL and parts of URL?</li>
+                        <li>How does HTML file processed in web browser?</li>
+                        <li>How will page navigation flow be managed among all HTML pages?</li>
+                        <li>How will GitHub commits be maintained after each practical?</li>
+                    </ol>
+
+                    <p><strong>Key Skills to be Addressed:</strong> Requirement analysis, sitemap design, wireframing, Git/GitHub, README writing, folder structuring.</p>
+                    <p><strong>Applications:</strong> Web application planning and maintainable project setup.</p>
+                    <p><strong>Learning Outcome:</strong> Students will be able to analyze requirements and prepare a structured project foundation before implementation.</p>
+                    <p><strong>CO Mapping:</strong> CO1</p>
+                    <p><strong>Dataset/Test Data:</strong> N/A; design artefacts only.</p>
+                    <p><strong>Tools/Technology to be Used:</strong> VS Code, Draw.io/Figma, Git, GitHub.</p>
+                    <p><strong>Total Hours:</strong> Implementation: 4 hours | Total engagement: 4 hours.</p>
+                    <p><strong>Post Laboratory Work Description:</strong> Submit project functional requirements, sitemap, wireframe screenshots, GitHub repository link, and README.md.</p>
+                    <p><strong>Evaluation Strategy Including Viva:</strong> Requirement clarity, sitemap completeness, role definition, repository structure, and viva on project scope.</p>
+                    <p><strong>Advanced/Intermediate Extension:</strong> Intermediate: Create responsive wireframes in Figma. Advanced: Prepare ER diagram and REST-style route plan for future backend modules.</p>
+                </div>
+
+                <div class="lab-detail">
+                    <h4>Practical 2: Semantic HTML5 Pages with Accessibility-Ready Structure</h4>
+                    <p><strong>Problem Definition:</strong> Develop static HTML5 skeletons for at least 10 Student Hub pages such as Home, About, Register, Login, Dashboard, Events, Profile, Contact, Admin, FAQ, and Feedback. Use semantic tags and accessibility-friendly structure.</p>
+
+                    <p><strong>Key Questions / Analysis / Interpretation:</strong></p>
+                    <ol>
+                        <li>Are semantic tags such as header, nav, main, section, article, aside, and footer used properly?</li>
+                        <li>Are form labels, headings, image alt text, and navigation links accessible?</li>
+                        <li>Is the page structure consistent across all pages?</li>
+                    </ol>
+
+                    <p><strong>Key Skills to be Addressed:</strong> HTML5 semantic elements, accessibility basics, page linking, navigation menu, content hierarchy.</p>
+                    <p><strong>Applications:</strong> Static website foundations and accessible UI design.</p>
+                    <p><strong>Learning Outcome:</strong> Students will create clean, linked, and accessibility-ready HTML page structures.</p>
+                    <p><strong>CO Mapping:</strong> CO1, CO2</p>
+                    <p><strong>Dataset/Test Data:</strong> Sample page content for student portal.</p>
+                    <p><strong>Tools/Technology to be Used:</strong> VS Code, HTML5, browser accessibility inspection tools.</p>
+                    <p><strong>Total Hours:</strong> Implementation: 4 hours | Total engagement: 6 hours.</p>
+                    <p><strong>Post Laboratory Work Description:</strong> Submit static page screenshots, source code, and accessibility checklist.</p>
+                    <p><strong>Evaluation Strategy Including Viva:</strong> Semantic correctness, page linking, accessibility readiness, and code readability.</p>
+                    <p><strong>Advanced/Intermediate Extension:</strong> Intermediate: Add breadcrumb navigation. Advanced: Add skip-to-content link and keyboard-friendly navigation.</p>
+                </div>
+
+                <div class="lab-detail">
+                    <h4>Practical 3: Responsive UI Design using CSS Grid, Flexbox, and Bootstrap/Tailwind</h4>
+                    <p><strong>Problem Definition:</strong> Design responsive layouts for Home, About, Registration, Dashboard, and Events pages using CSS Grid and Flexbox. Optional to use CSS framework such as Bootstrap or Tailwind. Ensure mobile-first responsiveness.</p>
+
+                    <p><strong>Key Questions / Analysis / Interpretation:</strong></p>
+                    <ol>
+                        <li>How does the layout adapt for mobile, tablet, and desktop screens?</li>
+                        <li>Which layout technique is used and why?</li>
+                        <li>Are typography, spacing, colors, and contrast readable?</li>
+                        <li>Is the framework used consistently without unnecessary inline CSS?</li>
+                    </ol>
+
+                    <p><strong>Key Skills to be Addressed:</strong> CSS3, media queries, Flexbox, Grid, Bootstrap components, responsive design.</p>
+                    <p><strong>Applications:</strong> Multi-device web interface design.</p>
+                    <p><strong>Learning Outcome:</strong> Students will design a professional, responsive, and reusable UI layout.</p>
+                    <p><strong>CO Mapping:</strong> CO2</p>
+                    <p><strong>Dataset/Test Data:</strong> N/A; UI design only.</p>
+                    <p><strong>Tools/Technology to be Used:</strong> HTML5, CSS3, Bootstrap, browser responsive mode.</p>
+                    <p><strong>Total Hours:</strong> Implementation: 4 hours | Total engagement: 6 hours.</p>
+                    <p><strong>Post Laboratory Work Description:</strong> Submit screenshots for mobile, tablet, and desktop views.</p>
+                    <p><strong>Evaluation Strategy Including Viva:</strong> Responsiveness, framework usage, visual consistency, and CSS organization.</p>
+                    <p><strong>Advanced/Intermediate Extension:</strong> Intermediate: Add Contact and Feedback pages. Advanced: Create reusable layout components using JavaScript libraries such as jQuery.</p>
+                </div>
+
+                <div class="lab-detail">
+                    <h4>Practical 4: JavaScript DOM Manipulation, Event Handling, and UI Interactivity</h4>
+                    <p><strong>Problem Definition:</strong> Add dynamic UI components such as collapsible FAQ, modal popup, image/content slider, notification banner, hamburger menu, and light/dark theme switcher using JavaScript.</p>
+
+                    <p><strong>Key Questions / Analysis / Interpretation:</strong></p>
+                    <ol>
+                        <li>How are DOM elements selected and modified?</li>
+                        <li>Are event listeners attached correctly?</li>
+                        <li>Is localStorage used for remembering theme choice?</li>
+                        <li>Does interactivity improve usability without breaking accessibility?</li>
+                    </ol>
+
+                    <p><strong>Key Skills to be Addressed:</strong> DOM selection, event handling, class manipulation, localStorage, basic animation.</p>
+                    <p><strong>Applications:</strong> Interactive dashboards and dynamic frontend behaviour.</p>
+                    <p><strong>Learning Outcome:</strong> Students will apply JavaScript to enhance user experience and client-side interactivity.</p>
+                    <p><strong>CO Mapping:</strong> CO3, CO4</p>
+                    <p><strong>Dataset/Test Data:</strong> Static FAQ/event content.</p>
+                    <p><strong>Tools/Technology to be Used:</strong> JavaScript ES6+, HTML5, CSS3, browser dev tools.</p>
+                    <p><strong>Total Hours:</strong> Implementation: 4 hours | Total engagement: 6 hours.</p>
+                    <p><strong>Post Laboratory Work Description:</strong> Submit live demo and source-code explanation.</p>
+                    <p><strong>Evaluation Strategy:</strong> DOM logic, event handling correctness, usability, and browser console testing.</p>
+                    <p><strong>Advanced/Intermediate Extension:</strong> Intermediate: Add transition effects to cards/buttons. Advanced: Store user UI preferences in localStorage and restore them on page load.</p>
+                </div>
+
+                <div class="lab-detail">
+                    <h4>Practical 5: Registration Form with Frontend Validation and User-Friendly Error Handling</h4>
+                    <p><strong>Problem Definition:</strong> Create a student registration form with HTML5 input types and JavaScript validation for name, email, mobile number, password, confirm password, course, year, gender, and terms acceptance. Use Regular Expression for validations.</p>
+
+                    <p><strong>Key Questions / Analysis / Interpretation:</strong></p>
+                    <ol>
+                        <li>Are correct input types and attributes used?</li>
+                        <li>Are validation errors displayed near the relevant fields?</li>
+                        <li>Is password strength checked?</li>
+                        <li>Is the form accessible using keyboard and screen-reader-friendly labels?</li>
+                    </ol>
+
+                    <p><strong>Key Skills to be Addressed:</strong> HTML forms, JavaScript validation, regular expressions, password strength meter, UX error messages.</p>
+                    <p><strong>Applications:</strong> Registration and data-entry systems.</p>
+                    <p><strong>Learning Outcome:</strong> Students will design accessible forms with robust client-side validation.</p>
+                    <p><strong>CO Mapping:</strong> CO1, CO3</p>
+                    <p><strong>Dataset/Test Data:</strong> Valid and invalid sample registration inputs.</p>
+                    <p><strong>Tools/Technology to be Used:</strong> HTML5, JavaScript ES5/ES6, browser dev tools.</p>
+                    <p><strong>Total Hours:</strong> Implementation: 4 hours | Total engagement: 6 hours.</p>
+                    <p><strong>Post Laboratory Work Description:</strong> Submit validation test cases with screenshots for valid and invalid inputs.</p>
+                    <p><strong>Evaluation Strategy Including Viva:</strong> Input coverage, validation accuracy, error handling, and code walkthrough.</p>
+                    <p><strong>Advanced/Intermediate Extension:</strong> Intermediate: Add real-time validation on keyup/change events. Advanced: Add custom CAPTCHA using Canvas.</p>
+                </div>
+
+                <div class="lab-detail">
+                    <h4>Practical 6: Rendering External JSON Data using Fetch API, Search and Filter</h4>
+                    <p><strong>Problem Definition:</strong> Display event lists, student profiles, notices, or FAQs from external JSON files using Fetch API. Implement dynamic rendering, search, filter, sorting, and pagination.</p>
+
+                    <p><strong>Key Questions / Analysis / Interpretation:</strong></p>
+                    <ol>
+                        <li>How is JSON fetched, parsed, and rendered?</li>
+                        <li>Which array methods are used for search, filter, sort, and pagination?</li>
+                        <li>How are loading and error states handled?</li>
+                        <li>How is modularity maintained in JavaScript files?</li>
+                    </ol>
+
+                    <p><strong>Key Skills to be Addressed:</strong> JSON, Fetch API, arrays, map/filter/sort, modular JavaScript, pagination logic.</p>
+                    <p><strong>Applications:</strong> Dynamic data rendering in modern web applications.</p>
+                    <p><strong>Learning Outcome:</strong> Students will consume external JSON data and render reusable frontend views.</p>
+                    <p><strong>CO Mapping:</strong> CO3, CO4</p>
+                    <p><strong>Dataset/Test Data:</strong> events.json, students.json, faqs.json with at least 15 records each.</p>
+                    <p><strong>Tools/Technology to be Used:</strong> JavaScript ES6+, JSON, HTML5, CSS3.</p>
+                    <p><strong>Total Hours:</strong> Implementation: 4 hours | Total engagement: 6 hours.</p>
+                    <p><strong>Post Laboratory Work Description:</strong> Submit JSON files, rendered views, and test screenshots for search/filter/pagination.</p>
+                    <p><strong>Evaluation Strategy Including Viva:</strong> JSON parsing, array logic, UI rendering, error handling, and console testing.</p>
+                    <p><strong>Advanced/Intermediate Extension:</strong> Intermediate: Add dependent dropdowns for country/state/city. Advanced: Cache the latest JSON response in localStorage for offline-like display.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Student Hub Portal | All Rights Reserved.</p>
+    </footer>
+</div>
+
+<script src="javascript/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</body>
+</html>
