@@ -1,0 +1,1 @@
+# StudentHub Portal — Requirements ## Problem Scope StudentHub Portal is a semester project for Web Development Frameworks (ITUE203), Semester 3, 2026-27 (odd). It replaces the static HTML prototype with a modern PHP + MySQL backend and a clean, academic SaaS UI.
