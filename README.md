@@ -1,14 +1,14 @@
 # StudentHub Portal
 
-A modern PHP + MySQL backend student management portal with academic SaaS design.
+A modern PHP student hub with an academic SaaS design. Public pages and student sign-up work with PHP and local JSON storage; the SQL schema remains available for database practicals and future integrations.
 
 ## Overview
 
-StudentHub Portal is a complete student management system built with PHP and MySQL/MariaDB, featuring:
+StudentHub Portal is a student hub built with PHP, featuring:
 - Three roles: Guest, Student, and Admin
 - Light blue "academic SaaS" design system
 - No build tools required - runs on XAMPP PHP built-in server
-- All PHP uses prepared statements, password_hash/password_verify, output escaping
+- Passwords are stored as hashes and user-facing output is escaped
 
 ## Live Demo
 
@@ -18,27 +18,17 @@ Visit `http://localhost/studenthub/` after following the setup steps below.
 
 ### 1. Install XAMPP
 Download and install XAMPP from: https://apachefriends.org  
-Start Apache and MySQL services via XAMPP Control Panel
+Start Apache from XAMPP Control Panel. MySQL is optional for the public portal.
 
-### 2. Create Database
-```bash
-mysql -u root -p
-CREATE DATABASE studenthub_db DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-USE studenthub_db;
-```
-
-### 3. Import Data
-```bash
-mysql -u root studenthub_db < database/schema.sql
-mysql -u root studenthub_db < database/seed.sql
-```
-
-### 4. Place Files
+### 2. Place Files
 Move the `studenthub` folder to your web root:
 - **XAMPP**: `C:\xampp\htdocs\studenthub\`
 
-### 5. Run
-Visit: `http://localhost/studenthub/`
+### 3. Run
+Visit `http://localhost/studenthub/` and create a student account. Apache must be able to write to the project-level `data/` directory; it is created when the first account or form submission is saved. Apache blocks direct access to account data files.
+
+### Optional: SQL Practicals
+The SQL schema and seed files remain available for database exercises. Import `database/schema.sql` and `database/seed.sql` if you are using those practicals.
 
 ## Project Structure
 
@@ -108,24 +98,18 @@ studenthub/
 | Role | URL | Features |
 |------|-----|----------|
 | **Guest** | `/` | Homepage, about, events, faq, contact, feedback, register, login |
-| **Student** | `/student/dashboard.php` | Dashboard with stats + timer, profile + change password, timetable, materials, my events |
-| **Admin** | `/admin/dashboard.php` | Dashboard with stats + Chart.js, user management, event CRUD, student management |
+| **Student** | `/student/dashboard.php` | Dashboard, account summary, sample timetable, materials guidance, and upcoming events |
+| **Admin** | `/admin/dashboard.php` | Role-protected administration overview and read-only student/event pages |
 
-Login credentials after seed import:
-- Student: `25CS001` / `student123`
-- Student: `25CS002` / `student123`
+Register a student account from the portal. Administrator access requires an administrator account provisioned by the deployment owner.
 
 ## API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/students.php` | GET | List students with search/pagination |
-| `/api/students.php` | POST | Create student |
-| `/api/students.php?id=XXX` | GET | Get student by ID |
-| `/api/events.php` | GET | List events |
-| `/api/events.php` | POST | Create event |
-| `/api/events.php?id=XXX` | GET | Get event by ID |
-| `/api/async_students.php` | GET | Async students with debounce |
+| `/api/students.php` | GET | Get the signed-in student's own account |
+| `/api/events.php` | GET | List upcoming campus events |
+| `/api/async_students.php` | GET | Search student accounts (administrator only) |
 
 ## Design System
 

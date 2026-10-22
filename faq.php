@@ -2,7 +2,6 @@
 if (!defined('BASE_URL')) {
     $base = dirname($_SERVER['PHP_SELF']);
     define('BASE_URL', $base === '/' || $base === '' ? '' : rtrim($base, '/\\') . '/');
-    require __DIR__ . '/includes/config.php';
 }
 
 $faqItems = [

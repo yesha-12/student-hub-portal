@@ -3,6 +3,18 @@ declare(strict_types=1);
 
 header('Content-Type: application/json; charset=utf-8');
 
+if (session_status() !== PHP_SESSION_ACTIVE) {
+	session_name('studenthub');
+	session_start();
+}
+if (isset($_SESSION['LAST_ACTIVITY']) && time() - (int) $_SESSION['LAST_ACTIVITY'] > 600) {
+	session_unset();
+	session_destroy();
+	session_name('studenthub');
+	session_start();
+}
+$_SESSION['LAST_ACTIVITY'] = time();
+
 $dataDirectory = __DIR__ . DIRECTORY_SEPARATOR . 'data';
 
 if (!is_dir($dataDirectory) && !mkdir($dataDirectory, 0755, true) && !is_dir($dataDirectory)) {
@@ -27,6 +39,9 @@ try {
 		case 'contact':
 			saveContactMessage($request, $dataDirectory);
 			break;
+		case 'feedback':
+			saveFeedback($request, $dataDirectory);
+			break;
 		case 'update':
 			updateStudent($request, $dataDirectory);
 			break;
@@ -47,10 +62,21 @@ function registerStudent(array $request, string $dataDirectory): void
 		'semester' => clean($request['semester'] ?? ''),
 		'contactNumber' => clean($request['contactNumber'] ?? ''),
 		'profilePic' => clean($request['profilePic'] ?? ''),
+		'role' => 'student',
 	];
 	$password = (string) ($request['password'] ?? '');
 
-	checkRequiredFields($student, 'All student fields are required.');
+	if ($password !== (string) ($request['passwordConfirm'] ?? '')) {
+		respond(false, 'Passwords do not match.', 422);
+	}
+	checkRequiredFields([
+		'name' => $student['name'],
+		'studentId' => $student['studentId'],
+		'email' => $student['email'],
+		'department' => $student['department'],
+		'semester' => $student['semester'],
+		'contactNumber' => $student['contactNumber'],
+	], 'All student fields are required.');
 	validatePassword($password);
 	validateEmail($student['email']);
 
@@ -78,6 +104,13 @@ function loginStudent(array $request, string $dataDirectory): void
 
 	foreach ($students as $student) {
 		if ($student['studentId'] === $studentId && password_verify($password, $student['password'])) {
+			$_SESSION['user_logged_in'] = true;
+			$_SESSION['student_id'] = $student['studentId'];
+			$_SESSION['user_role'] = $student['role'] ?? 'student';
+			$_SESSION['user_name'] = $student['name'];
+			$_SESSION['user_email'] = $student['email'];
+			session_regenerate_id(true);
+			$_SESSION['LAST_ACTIVITY'] = time();
 			unset($student['password']);
 			respond(true, 'Login successful.', 200, ['student' => $student]);
 		}
@@ -89,6 +122,10 @@ function loginStudent(array $request, string $dataDirectory): void
 function updateStudent(array $request, string $dataDirectory): void
 {
 	$studentId = clean($request['studentId'] ?? '');
+	if (empty($_SESSION['user_logged_in']) || ($_SESSION['student_id'] ?? '') !== $studentId) {
+		respond(false, 'Sign in to update your own student profile.', 403);
+	}
+
 	$students = readCollection($dataDirectory . DIRECTORY_SEPARATOR . 'students.json');
 	$index = -1;
 
@@ -161,6 +198,34 @@ function saveContactMessage(array $request, string $dataDirectory): void
 	$messages[] = $message;
 	writeCollection($messagesFile, $messages);
 	respond(true, 'Message sent.', 201);
+}
+
+function saveFeedback(array $request, string $dataDirectory): void
+{
+	$feedback = [
+		'name' => clean($request['name'] ?? ''),
+		'email' => strtolower(clean($request['email'] ?? '')),
+		'rating' => clean($request['rating'] ?? ''),
+		'message' => clean($request['message'] ?? ''),
+		'createdAt' => date(DATE_ATOM),
+	];
+
+	checkRequiredFields([
+		'name' => $feedback['name'],
+		'email' => $feedback['email'],
+		'rating' => $feedback['rating'],
+		'message' => $feedback['message'],
+	], 'Name, email, rating, and feedback are required.');
+	validateEmail($feedback['email']);
+	if (!in_array($feedback['rating'], ['great', 'good', 'okay', 'poor'], true)) {
+		respond(false, 'Please choose a valid rating.', 422);
+	}
+
+	$feedbackFile = $dataDirectory . DIRECTORY_SEPARATOR . 'feedback.json';
+	$items = readCollection($feedbackFile);
+	$items[] = $feedback;
+	writeCollection($feedbackFile, $items);
+	respond(true, 'Feedback received.', 201);
 }
 
 function checkRequiredFields(array $fields, string $message): void

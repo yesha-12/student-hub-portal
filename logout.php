@@ -4,8 +4,11 @@ if (!defined('BASE_URL')) {
     define('BASE_URL', $base === '/' || $base === '' ? '' : rtrim($base, '/\\') . '/');
 }
 
-// Start session
-session_start();
+// Start the same session used by the file-backed account endpoints.
+if (session_status() !== PHP_SESSION_ACTIVE) {
+    session_name('studenthub');
+    session_start();
+}
 
 // Destroy the session
 $_SESSION = array();

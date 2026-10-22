@@ -6,9 +6,8 @@
 
 - **XAMPP** (version 8.2+) or **WAMP** or **MAMP**
   - Apache HTTP Server
-  - MySQL / MariaDB database
-  - PHP 8.0+ with PDO extension
-- Admin access to create MySQL databases
+  - PHP 8.0+
+- Apache must be able to write to the project-level `data/` directory for accounts and form submissions.
 
 ### Local Development Setup
 
@@ -16,7 +15,13 @@
 Download and install XAMPP from https://apachefriends.org  
 Start the Apache and MySQL services via XAMPP Control Panel
 
-#### 2. Create Database
+#### 2. Open the Portal
+
+Visit `http://localhost/studenthub/` and create a student account from the registration page. The portal stores account and form data as JSON files under `data/`; Apache denies direct requests for those files.
+
+#### Optional: Create a MySQL Database
+
+The SQL schema is retained for database practicals and optional integrations:
 ```bash
 mysql -u root -p
 # Enter MySQL root password (default: empty)
@@ -24,7 +29,7 @@ CREATE DATABASE studenthub_db DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unic
 USE studenthub_db;
 ```
 
-#### 3. Import Schema and Seed Data
+#### Optional: Import Schema and Seed Data
 ```bash
 mysql -u root studenthub_db < database/schema.sql
 mysql -u root studenthub_db < database/seed.sql
@@ -37,7 +42,7 @@ Move the entire `studenthub` folder to your web server root:
 - **WAMP**: `C:\wamp\www\studenthub\`
 - **MAMP**: `/Applications/MAMP/htdocs/studenthub/`
 
-#### 5. Configure Database Credentials
+#### Optional: Configure Database Credentials
 Edit `includes/config.php`:
 ```php
 $host = 'localhost';
@@ -62,36 +67,29 @@ Visit: `http://localhost/studenthub/`
 
 | Role | Student ID | Email | Password |
 |------|-----------|-------|----------|
-| Student | 25CS001 | alice.j@charusat.edu.in | `student123` |
-| Student | 25CS002 | bob.s@charusat.edu.in | `student123` |
-| Admin | - | - | Create via registration or direct DB insert |
+Register a student account from the portal. Registration assigns the student role and stores a password hash. Administrator access requires an administrator account provisioned by the deployment owner.
 
 ### API Endpoints
 
 | Endpoint | Method | Description |
 |----------|--------|-------------|
-| `/api/students.php` | GET | List students with optional search/pagination |
-| `/api/students.php?id=XXX` | GET | Get student by ID |
-| `/api/students.php` | POST | Create new student |
-| `/api/events.php` | GET | List events |
-| `/api/events.php?id=XXX` | GET | Get event by ID |
-| `/api/events.php` | POST | Create new event |
-| `/api/async_students.php` | GET | List students with search and pagination |
+| `/api/students.php` | GET | Get the signed-in student's own account |
+| `/api/events.php` | GET | List upcoming campus events |
+| `/api/async_students.php` | GET | Search student accounts (administrator only) |
 
 ### XAMPP Configuration Notes
 
-1. **PHP Settings**: Ensure `extension=pdo_mysql` is enabled in `php.ini`
-2. **Session Timeout**: The portal uses 10-minute inactive session timeout
-3. **Cookie Settings**: For "remember me" functionality, cookies are set for 30 days
-4. **Error Reporting**: Set `display_errors = Off` in production `php.ini`
-5. **Timeout**: The `php -S` server has a default timeout of 5 seconds; increase via `php.ini` if needed
+1. **Data Storage**: Ensure Apache can create and write JSON files in the project-level `data/` directory.
+2. **Sessions**: Signed-in pages use a `studenthub` PHP session.
+3. **Database Practicals**: Enable `extension=pdo_mysql` and import the SQL schema only if using the optional MySQL practicals.
+4. **Error Reporting**: Set `display_errors = Off` in production `php.ini`.
 
 ### Troubleshooting
 
 | Issue | Solution |
 |-------|----------|
 | "No such file or directory" error | Ensure you're in the project root for `php -S` |
-| Database connection error | Check `includes/config.php` credentials |
+| Database connection error | MySQL is only required for optional SQL practicals; verify `includes/config.php` if using them |
 | 404 on pages | Ensure `.htaccess` is present and `BASE_URL` is correct |
 | Login fails | Verify password matches hashed value in DB |
 | API returns 500 | Check Apache/PHP error log for details |
@@ -100,8 +98,8 @@ Visit: `http://localhost/studenthub/`
 ### Production Checklist
 
 - [ ] All PHP files pass `php -l` lint check
-- [ ] Database imported with schema.sql and seed.sql
-- [ ] `includes/config.php` has correct credentials
+- [ ] Apache can write to the project-level `data/` directory
+- [ ] SQL database imported if database practicals are being used
 - [ ] `BASE_URL` is set correctly for the production domain
 - [ ] SSL certificate installed (HTTPS recommended)
 - [ ] Session cookie settings reviewed for production

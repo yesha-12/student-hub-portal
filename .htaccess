@@ -13,3 +13,6 @@ RewriteRule ^(admin|student|profile|courses|assignment|attendance|faculty|facult
 <Files "academic.php">
     Require all denied
 </Files>
+<FilesMatch "^(students|messages|feedback)\.json$">
+    Require all denied
+</FilesMatch>

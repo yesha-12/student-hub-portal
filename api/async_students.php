@@ -1,122 +1,71 @@
 <?php
-/**
- * API Endpoint: /api/async_students.php
- * Routes: GET /api/async_students.php?search=term&page=1&per=20 - list students with search and pagination
- *         GET /api/async_students.php?student_id=XXX - get student by ID
- */
+declare(strict_types=1);
 
-// Database config
-$host = 'localhost';
-$db   = 'studenthub_db';
-$user = 'root';
-$pass = '';
-$charset = 'utf8mb4';
+header('Content-Type: application/json; charset=utf-8');
+header('Cache-Control: no-store');
 
-$dsn = "mysql:host=$host;dbname=$db;charset=$charset";
-$options = [
-    PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-    PDO::ATTR_EMULATE_PREPARES   => false,
-];
-
-try {
-    $pdo = new PDO($dsn, $user, $pass, $options);
-} catch (\PDOException $e) {
-    throw new \PDOException($e->getMessage(), (int)$e->getCode());
+if (session_status() !== PHP_SESSION_ACTIVE) {
+	session_name('studenthub');
+	session_start();
 }
 
-// Helper functions
-function respond($success, $message, $status = 200, $data = []) {
-    http_response_code($status);
-    $response = [
-        'success' => $success,
-        'message' => $message,
-        'timestamp' => date(DATE_ATOM),
-    ];
-    if (!empty($data)) {
-        $response['data'] = $data;
-    }
-    echo json_encode($response);
-    exit;
+if (empty($_SESSION['user_logged_in']) || ($_SESSION['user_role'] ?? '') !== 'admin') {
+	http_response_code(403);
+	echo json_encode(['success' => false, 'message' => 'Administrator access is required.']);
+	exit;
 }
 
-// Get query parameters
-$query = [];
-if (!empty($_SERVER['QUERY_STRING'])) {
-    parse_str($_SERVER['QUERY_STRING'], $query);
+if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'GET') {
+	header('Allow: GET');
+	http_response_code(405);
+	echo json_encode(['success' => false, 'message' => 'Only GET is supported.']);
+	exit;
 }
-$search = $query['search'] ?? '';
-$page = ($query['page'] ?? 1);
-$per = ($query['per'] ?? 20);
-$offset = ($page - 1) * $per;
 
-// Handle routes
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri = explode('/', $uri);
-$route = end($uri);
-
-// Get student ID from query
-$id = $query['student_id'] ?? null;
-
-// Handle routes
-switch ($route) {
-    case '':
-        // GET /api/async_students.php - list students with search and pagination
-        if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-            // Build query with search
-            $where = '';
-            $params = [];
-            
-            if (!empty($search)) {
-                $where = ' WHERE name LIKE ? OR email LIKE ? OR student_id LIKE ?';
-                $searchParam = "%$search%";
-                $params = [$searchParam, $searchParam, $searchParam];
-            }
-            
-            // Count total for pagination
-            $countStmt = $pdo->prepare("SELECT COUNT(*) as total FROM students $where");
-            $countStmt->execute($params);
-            $total = $countStmt->fetch()['total'];
-            
-            // Get paginated results
-            $stmt = $pdo->prepare("SELECT student_id, name, email, department, semester, role, status, created_at FROM students $where ORDER BY created_at DESC LIMIT ? OFFSET ?");
-            $stmt->execute(array_merge($params, [$per, $offset]));
-            $students = $stmt->fetchAll();
-            
-            respond(true, 'Students retrieved successfully', 200, [
-                'students' => $students,
-                'pagination' => [
-                    'total' => $total,
-                    'page' => $page,
-                    'per_page' => $per,
-                    'total_pages' => ceil($total / $per),
-                ]
-            ]);
-        }
-        else {
-            respond(false, 'Method not allowed', 405);
-        }
-        break;
-
-    case 'students':
-        // GET /api/async_students.php?student_id=XXX - get student by ID
-        if ($_SERVER['REQUEST_METHOD'] === 'GET' && $id) {
-            $stmt = $pdo->prepare('SELECT student_id, name, email, department, semester, role, status, last_login, created_at FROM students WHERE student_id = ?');
-            $stmt->execute([$id]);
-            $student = $stmt->fetch();
-            
-            if ($student) {
-                respond(true, 'Student retrieved successfully', 200, $student);
-            } else {
-                respond(false, 'Student not found', 404);
-            }
-        }
-        else {
-            respond(false, 'Student ID required', 400);
-        }
-        break;
-        
-    default:
-        respond(false, 'Route not found', 404);
-        break;
+$studentsFile = dirname(__DIR__) . DIRECTORY_SEPARATOR . 'data' . DIRECTORY_SEPARATOR . 'students.json';
+$students = [];
+if (is_file($studentsFile)) {
+	$storedStudents = json_decode((string) file_get_contents($studentsFile), true);
+	if (!is_array($storedStudents)) {
+		http_response_code(500);
+		echo json_encode(['success' => false, 'message' => 'Student records could not be read.']);
+		exit;
+	}
+	$students = $storedStudents;
 }
+
+$search = trim((string) ($_GET['search'] ?? ''));
+if ($search !== '') {
+	$students = array_values(array_filter($students, static function (array $student) use ($search): bool {
+		foreach (['name', 'email', 'studentId'] as $field) {
+			if (stripos((string) ($student[$field] ?? ''), $search) !== false) {
+				return true;
+			}
+		}
+		return false;
+	}));
+}
+
+$total = count($students);
+$page = max(1, (int) ($_GET['page'] ?? 1));
+$perPage = min(100, max(1, (int) ($_GET['per'] ?? 20)));
+$students = array_slice($students, ($page - 1) * $perPage, $perPage);
+foreach ($students as &$student) {
+	unset($student['password']);
+}
+unset($student);
+
+echo json_encode([
+	'success' => true,
+	'message' => 'Students retrieved successfully.',
+	'timestamp' => date(DATE_ATOM),
+	'data' => [
+		'students' => $students,
+		'pagination' => [
+			'total' => $total,
+			'page' => $page,
+			'per_page' => $perPage,
+			'total_pages' => (int) ceil($total / $perPage),
+		],
+	],
+], JSON_UNESCAPED_SLASHES);
