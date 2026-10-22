@@ -48,7 +48,8 @@ studenthub/
 ├── 404.php                # Page not found
 ├── includes/
 │   ├── config.php         # PDO connection, session, BASE_URL
-│   └── auth.php           # login(), logout(), require_login(), require_role()
+│   ├── auth.php           # login(), logout(), require_login(), require_role()
+│   └── practical13-data.php # Fictional student records for the dashboard demo
 ├── assets/
 │   ├── css/
 │   │   ├── tokens.css     # Design tokens (--bg, --primary, etc.)
@@ -75,7 +76,8 @@ studenthub/
 ├── api/
 │   ├── students.php       # CRUD + search+pagination+envelope
 │   ├── events.php         # CRUD
-│   └── async_students.php # Async API with AbortController
+│   ├── async_students.php # Async API with AbortController
+│   └── practical13.php    # Read-only fictional records for the home-page demo
 ├── database/
 │   ├── schema.sql         # 3NF with PK/FK/ON DELETE CASCADE
 │   ├── seed.sql           # ~25 students, ~15 events, ~20 registrations
@@ -110,6 +112,7 @@ Register a student account from the portal. Administrator access requires an adm
 | `/api/students.php` | GET | Get the signed-in student's own account |
 | `/api/events.php` | GET | List upcoming campus events |
 | `/api/async_students.php` | GET | Search student accounts (administrator only) |
+| `/api/practical13.php` | GET | Read-only fictional records for the Practical 13 dashboard; dashboard writes are simulated in the browser |
 
 ## Design System
 
