@@ -1,0 +1,15 @@
+Options -Indexes
+AddType application/x-httpd-php .php
+
+RewriteEngine On
+RewriteRule ^(admin|student|profile|courses|assignment|attendance|faculty|faculty-dashboard)\.html$ protected_page.php?page=$1 [L,QSA]
+
+<Files "database.sql">
+    Require all denied
+</Files>
+<Files "db.php">
+    Require all denied
+</Files>
+<Files "academic.php">
+    Require all denied
+</Files>
