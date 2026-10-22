@@ -1,33 +1,211 @@
-# StudentHub
+# StudentHub Portal
 
-## Run locally with XAMPP
+A modern PHP + MySQL backend student management portal with academic SaaS design.
 
-1. Start MySQL in the XAMPP Control Panel.
-2. Open phpMyAdmin and import `database.sql` (or run it with the MySQL client). The script creates the `studenthub` database, role-aware academic tables, sample courses/enrollments, and notices.
-3. Put this project folder under `C:\xampp\htdocs\studenthub` and start Apache, then open `http://localhost/studenthub/`.
-4. If the MySQL account is not XAMPP's default `root` account with an empty password, set `STUDENTHUB_DB_HOST`, `STUDENTHUB_DB_USER`, `STUDENTHUB_DB_PASSWORD`, and `STUDENTHUB_DB_NAME` in the PHP server environment. Do not commit production credentials.
+## Overview
 
-The PHP server and MySQL must both be running; opening the HTML files directly with `file://` will not run the PHP-backed workflows.
+StudentHub Portal is a complete student management system built with PHP and MySQL/MariaDB, featuring:
+- Three roles: Guest, Student, and Admin
+- Light blue "academic SaaS" design system
+- No build tools required - runs on XAMPP PHP built-in server
+- All PHP uses prepared statements, password_hash/password_verify, output escaping
 
-## Demo accounts
+## Live Demo
 
-- Administrator: username `admin`, password `Admin@123`
-- Faculty: username `faculty`, password `Faculty@123`
-- Student: username `learner`, password `Student@123`
+Visit `http://localhost/studenthub/` after following the setup steps below.
 
-Change or remove these development accounts before deploying the application publicly.
+## Quick Start
 
-## Database-backed workflows
+### 1. Install XAMPP
+Download and install XAMPP from: https://apachefriends.org  
+Start Apache and MySQL services via XAMPP Control Panel
 
-- Student registration checks unique student ID, username, and email, hashes passwords, and creates a session.
-- Login accepts username, student ID, or email. Sessions regenerate on authentication, use HTTP-only/SameSite cookies, expire after 30 minutes of inactivity, and require CSRF tokens for mutations.
-- Admin users can manage students, faculty, departments, courses, faculty-course assignments, enrollments, assignments, attendance, and notices.
-- Faculty users are limited to their assigned courses and can create assignments, view enrolled students, and manage attendance for those courses.
-- Students can view only their enrolled courses, their own attendance and assignments, submit assignment text, update their profile, and register once per event.
-- Attendance percentages, dashboard counts, reports, and assignment states are calculated from database records.
-- Important administrative and academic changes are recorded in the activity log.
-- Contact submissions and notices are stored in MySQL.
+### 2. Create Database
+```bash
+mysql -u root -p
+CREATE DATABASE studenthub_db DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE studenthub_db;
+```
 
-Database connection settings are read in `db.php`; the default values are for a local XAMPP installation only.
+### 3. Import Data
+```bash
+mysql -u root studenthub_db < database/schema.sql
+mysql -u root studenthub_db < database/seed.sql
+```
 
-For PHP's built-in development server, run `php -S 127.0.0.1:8000 router.php` from the project folder. The router applies the same server-side role checks to protected `.html` page URLs as the XAMPP Apache rewrite rules.
+### 4. Place Files
+Move the `studenthub` folder to your web root:
+- **XAMPP**: `C:\xampp\htdocs\studenthub\`
+
+### 5. Run
+Visit: `http://localhost/studenthub/`
+
+## Project Structure
+
+```
+studenthub/
+├── .htaccess              # Apache rewrites
+├── index.php              # Homepage
+├── about.php
+├── events.php
+├── faq.php
+├── contact.php
+├── feedback.php
+├── register.php           # Student registration
+├── login.php              # Student login
+├── logout.php             # Logout
+├── forbidden.php          # 403 Forbidden
+├── 404.php                # Page not found
+├── includes/
+│   ├── config.php         # PDO connection, session, BASE_URL
+│   └── auth.php           # login(), logout(), require_login(), require_role()
+├── assets/
+│   ├── css/
+│   │   ├── tokens.css     # Design tokens (--bg, --primary, etc.)
+│   │   ├── base.css       # Page background + radial glow
+│   │   └── components.css # Cards, buttons, badges, tables, forms, modals
+│   └── js/
+│       ├── theme.js       # Theme toggle with localStorage
+│       ├── nav.js         # Mobile nav drawer
+│       ├── faq.js         # FAQ accordion
+│       ├── slider.js      # Image/content slider
+│       ├── ui.js          # Toast, FocusTrap, debounce, truncate
+│       └── bg-network.js  # 25-blue-dot constellation canvas
+├── student/
+│   ├── dashboard.php      # Stats + session timer
+│   ├── profile.php        # Profile + change password
+│   ├── timetable.php      # CSS grid weekly timetable
+│   ├── material.php       # Course material cards
+│   └── my_events.php      # Registered events
+├── admin/
+│   ├── dashboard.php      # Stats cards + Chart.js
+│   ├── users.php          # User management
+│   ├── events.php         # Event CRUD + poster upload
+│   └── students.php       # Soft delete, CSV export, bulk actions
+├── api/
+│   ├── students.php       # CRUD + search+pagination+envelope
+│   ├── events.php         # CRUD
+│   └── async_students.php # Async API with AbortController
+├── database/
+│   ├── schema.sql         # 3NF with PK/FK/ON DELETE CASCADE
+│   ├── seed.sql           # ~25 students, ~15 events, ~20 registrations
+│   ├── pdo_demo.php       # PDO CRUD demo
+│   └── procedures.sql     # Stored procedures
+├── docs/
+│   ├── requirements.md    # 90+ requirements, 3 roles, tech stack
+│   ├── sitemap.md         # Mermaid flowchart
+│   ├── api-routes.md      # API envelope + route definitions
+│   ├── er-diagram.md      # Mermaid ER diagram
+│   ├── PROGRESS.md        # Phase tracking log
+│   ├── TEST_CASES.md      # All 15 practical test cases
+│   └── DEPLOYMENT.md      # XAMPP setup, smoke test, checklist
+├── legacy/                # All old files moved here (18 files)
+└── uploads/               # Event poster uploads (if any)
+```
+
+## Roles and Access
+
+| Role | URL | Features |
+|------|-----|----------|
+| **Guest** | `/` | Homepage, about, events, faq, contact, feedback, register, login |
+| **Student** | `/student/dashboard.php` | Dashboard with stats + timer, profile + change password, timetable, materials, my events |
+| **Admin** | `/admin/dashboard.php` | Dashboard with stats + Chart.js, user management, event CRUD, student management |
+
+Login credentials after seed import:
+- Student: `25CS001` / `student123`
+- Student: `25CS002` / `student123`
+
+## API Endpoints
+
+| Endpoint | Method | Description |
+|----------|--------|-------------|
+| `/api/students.php` | GET | List students with search/pagination |
+| `/api/students.php` | POST | Create student |
+| `/api/students.php?id=XXX` | GET | Get student by ID |
+| `/api/events.php` | GET | List events |
+| `/api/events.php` | POST | Create event |
+| `/api/events.php?id=XXX` | GET | Get event by ID |
+| `/api/async_students.php` | GET | Async students with debounce |
+
+## Design System
+
+### Color Tokens
+- `--bg`: Page background (#F4F7FA)
+- `--primary`: Electric blue (#0066FF)
+- `--secondary`: Secondary accent
+- `--success`: Soft mint green
+- `--warning`: Amber/orange
+- `--error`: Light red
+- `--radius`: Border radius (16px)
+- `--shadow`: Box shadow
+
+### Typography
+- Plus Jakarta Sans (headers)
+- JetBrains Mono (numbers, timestamps)
+
+### Components
+- Cards: white with var(--border) and var(--radius)
+- Buttons: primary (electric blue gradient), outline, ghost, danger
+- Badges: success (mint), warning, error, student, admin
+- Tables: clean horizontal dividers
+- Forms: labeled inputs, validation errors
+
+## Requirements
+
+This project satisfies 90+ requirements from docs/requirements.md including:
+
+- **3 Roles**: Guest/Student/Admin with dynamic navigation menus
+- **Design Tokens**: --bg, --primary, --secondary, --success, --warning, --error, --radius, --shadow, --gradient, --bg-network
+- **Tech Stack**: PHP 8.0+, MySQL/MariaDB, utf8mb4 charset, No build tools
+- **Page Inventory**: 15+ pages covering guest, student, and admin flows
+- **Security**: Prepared statements, password_hash/password_verify, output escaping
+- **Responsive**: Mobile-first, works at 360px, 768px, 1366px
+- **Authentication**: password_hash/password_verify, session_regenerate_id, role redirects, 10-min timeout, remember-me
+
+## Available Scripts
+
+### PHP Lint Check
+```bash
+php -l *.php
+```
+
+### Smoke Test (via curl)
+```bash
+# Check homepage
+curl -s -o /dev/null -w "%{http_code}" http://localhost/studenthub/
+
+# Check API
+curl -s http://localhost/studenthub/api/students.php | jq .
+
+# Check all PHP syntax
+find . -name "*.php" -exec php -l {} \;
+```
+
+## Deployment Checklist
+
+- [ ] XAMPP installed, Apache & MySQL running
+- [ ] Database `studenthub_db` created and imported
+- [ ] `includes/config.php` has correct credentials
+- [ ] `BASE_URL` set correctly for environment
+- [ ] All PHP files pass `php -l` lint check
+- [ ] Responsiveness tested at 360px, 768px, 1366px
+- [ ] Dark mode verified on all pages
+- [ ] Accessibility audit (contrast ≥4.5:1, semantic HTML)
+- [ ] No exposed secrets or passwords
+- [ ] Database backup created
+- [ ] API smoke test script run successfully
+
+## Available npm Scripts (If Using Build Tools)
+
+*(Note: This project runs without build tools. If adding React/Tailwind, see AGENTS.md for build configuration.)*
+
+## Git Information
+
+- **Branch**: main
+- **Commits**: 15+ practical-based commits
+- **Origin**: git@github.com:yesha-12/student-hub-portal.git
+- **.gitignore**: config.local.php, uploads/*, data/*, .DS_Store, *.log
+
+## Contact
+
+For support, visit the Contact page or check the FAQ at `/faq.php`.
